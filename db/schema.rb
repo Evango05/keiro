@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_161008) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_162325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_161008) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "catreqs", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "request_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_catreqs_on_category_id"
+    t.index ["request_id"], name: "index_catreqs_on_request_id"
   end
 
   create_table "hotcats", force: :cascade do |t|
@@ -54,10 +63,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_161008) do
     t.float "length"
     t.float "elevation"
     t.boolean "favorite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "request_id", null: false
+    t.index ["request_id"], name: "index_itineraries_on_request_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "distance"
+    t.float "longitude"
+    t.float "latitude"
+    t.string "constant_categories"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_itineraries_on_user_id"
+    t.string "category", array: true
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,9 +94,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_161008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "catreqs", "categories"
+  add_foreign_key "catreqs", "requests"
   add_foreign_key "hotcats", "categories"
   add_foreign_key "hotcats", "hotspots"
   add_foreign_key "hotitis", "hotspots"
   add_foreign_key "hotitis", "itineraries"
-  add_foreign_key "itineraries", "users"
+  add_foreign_key "itineraries", "requests"
+  add_foreign_key "requests", "users"
 end
