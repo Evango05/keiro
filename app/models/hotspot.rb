@@ -4,4 +4,6 @@ class Hotspot < ApplicationRecord
 
   has_many :categories, through: :hotcats
   has_many :itineraries, through: :hotitis
+
+  has_one_attached :photo
 end
