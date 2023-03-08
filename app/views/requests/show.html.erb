@@ -1,12 +1,9 @@
 <div class="container">
 
 
-  <div class="row page-title">
-    <h1>Requests#show</h1>
-    <p>Wanna find me? Look in --> app/views/requests/show.html.erb</p>
-  </div>
 
   <div class="row page-title">
+
     <h1>Request informations</h1>
     <p>latitude:
     <%= @request.latitude %>
@@ -14,6 +11,18 @@
     <p>longitude:
     <%= @request.latitude %>
     </p>
+
+    <h1>Requests#show</h1>
+    <h2>distance selectionné par le user </h2>
+    <p><%= @request.distance %>KM</p>
+    <h2>Hotspots correspondant aux categories cochés par le user</h2>
+    <ul>
+    <% @hotspots.each do |hotspot| %>
+    <li> <%= hotspot.name %> </li>
+    <% end %>
+
+    </ul>
+
   </div>
 
 </div>

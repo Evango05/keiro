@@ -48,15 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_113305) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "catreqs", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "request_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_catreqs_on_category_id"
-    t.index ["request_id"], name: "index_catreqs_on_request_id"
-  end
-
   create_table "hotcats", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "hotspot_id", null: false
@@ -122,8 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_113305) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "catreqs", "categories"
-  add_foreign_key "catreqs", "requests"
+
   add_foreign_key "hotcats", "categories"
   add_foreign_key "hotcats", "hotspots"
   add_foreign_key "hotitis", "hotspots"

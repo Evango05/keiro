@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'requests/new'
-  get 'requests/create'
-
   resources :hotspots
 
   devise_for :users
