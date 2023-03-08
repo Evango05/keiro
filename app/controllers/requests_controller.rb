@@ -41,6 +41,7 @@ class RequestsController < ApplicationController
     @hotspots = array.flatten
   end
 
+
   private
 
   def request_params
