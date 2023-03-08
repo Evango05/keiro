@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="row page-title">
+    <h1>Requests#new</h1>
+    <p>Wanna find me? Look in --> app/views/requests/new.html.erb</p>
+  </div>
+
+
+  <div class="row simple-form">
+    <%= simple_form_for @request do |f| %>
+      <%= f.input :distance%>
+
+      <%= f.input :category,
+                multiple: true,
+                as: :check_boxes,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector', :multiple => true},
+                collection: Request::CATEGORIES %>
+
+      <%= f.button :submit, class: "btn-primary"%>
+    <% end %>
+  </div>
+
+
+  <div class="row mapbox">
+    <h2>Carte mapbox</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/FraMauroDetailedMapInverted.jpg" alt="carte" width= 500px>
+  </div>
+
+</div>
