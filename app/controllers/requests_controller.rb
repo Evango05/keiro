@@ -16,7 +16,15 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    raise
+    @selected_cat = @request.category
+    @categories = Category.all
+    array = []
+    @selected_cat.each do |cat|
+      @categories.each do |category|
+          array << category.hotspots if cat == category.name
+      end
+    end
+    @hotspots = array.flatten
   end
 
   private

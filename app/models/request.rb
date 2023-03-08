@@ -3,6 +3,6 @@ class Request < ApplicationRecord
   has_many :itineraries
   has_many :categories, through: :catreqs
 
-  CATEGORIES = ["architecture", "parc", "street-art", "view", "urbex"]
+  CATEGORIES = ["Architecture", "Parc", "Street Art", "Point de vue", "Urbex"]
 
 end
