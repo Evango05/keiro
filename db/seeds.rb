@@ -20,7 +20,7 @@ puts "Creating Hotspots..."
 major = Hotspot.create!({
   name: "La Major - Cathédrale Sainte-Marie-Majeure",
   description: "Elle fut construite en style néo-byzantin entre 1852 et 1893 sur les plans de l'architecte Léon Vaudoyer. Située dans le quartier de la Joliette dans le 2e arrondissement, elle se dresse sur l'esplanade Jean-Paul II, entre le Vieux-Port et le port de la Joliette, sur l'emplacement de l'ancienne cathédrale du xiie siècle, d'où vient le nom occitan de « Major ».",
-  address: "Place De la Major, Marseille 2ème"
+  address: "Place De la Major, 13002 Marseille"
 })
 major.photo.attach(io: File.open('./db/seed_pics/major.jpeg'), filename: 'major.jpeg', content_type: 'image/jpeg')
 major.save!
@@ -29,7 +29,7 @@ ndlg = Hotspot.create!({
   name: "Basilique Notre-Dame-de-la-Garde",
   description: "La basilique Notre-Dame-de-la-Garde, souvent surnommée « la Bonne Mère », est une basilique mineure de l'Église catholique datée du xixe siècle. Emblème de Marseille, dédiée à Notre-Dame de la Garde (protectrice de Marseille avec saint Victor), elle domine la ville et la mer Méditerranée depuis le sommet de la colline Notre-Dame-de-la-Garde (site classé depuis 19171).
   Elle se situe à cheval sur les quartiers du Roucas-Blanc et de Vauban, sur un piton calcaire de 149 m d'altitude surélevé de 13 m grâce aux murs et soubassements d'un ancien fort.",
-  address: "Notre dame de la Garde, Rue Fort du Sanctuaire, 13006 Marseille"
+  address: "Rue Fort du Sanctuaire, 13006 Marseille"
 })
 ndlg.photo.attach(io: File.open('./db/seed_pics/ndlg.jpeg'), filename: 'ndlg.jpeg', content_type: 'image/jpeg')
 ndlg.save!
@@ -53,7 +53,7 @@ charite.save!
 fortsaintjean = Hotspot.create!({
   name: "Fort Saint-Jean",
   description: "Le Fort Saint Jean est un grand fort situé à l'entrée du Vieux Port de Marseille, face au Palais du Pharo, dans le 2e arrondissement. Pendant les croisades, il était le point de départ des Hospitaliers de Saint Jean pour rejoindre la Terre Sainte. L'ensemble de la construction a été achevée en 1365 mais le Roi René a encore fait édifier la grande tour carrée entre 1447 et 1453. Son but était alors de renforcer la protection du fort. En 1664, des armateurs marseillais construisent la grande tour ronde, très visible dès le premier regard. Appelée Tour Ronde ou Tour du Fanal, elle était utilisée pour observer les va-et-vient des navires de commerce à l'époque.",
-  address: "Fort Saint Jean, Quai du Port 13002 Marseille"
+  address: "Prom. Louis Brauquier, 13002 Marseille"
 })
 fortsaintjean.photo.attach(io: File.open('./db/seed_pics/fortsaintjean.jpg'), filename: 'fortsaintjean.jpg', content_type: 'image/jpg')
 fortsaintjean.save!
@@ -97,7 +97,6 @@ bunker = Hotspot.create!({
 })
 bunker.photo.attach(io: File.open('./db/seed_pics/bunker.jpeg'), filename: 'bunker.jpeg', content_type: 'image/jpeg')
 bunker.save!
-
 
 puts "Creating Categories..."
 
