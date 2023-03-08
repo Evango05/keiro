@@ -1,6 +1,15 @@
 class RequestsController < ApplicationController
   def new
     @request = Request.new
+    @hotspots = Hotspot.all
+    @markers = @hotspots.geocoded.map do |hotspot|
+      {
+        lat: hotspot.latitude,
+        lng: hotspot.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { hotspot: hotspot }),
+        marker_html: render_to_string(partial: "marker", locals: { hotspot: hotspot })
+      }
+    end
   end
 
   def create
