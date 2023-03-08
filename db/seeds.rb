@@ -69,7 +69,7 @@ valmer.save!
 invader1= Hotspot.create!({
   name: "Space invader - Corniche",
   description: "Invader est un artiste de rue et mosaïste français, né en France en 1969. Il installe depuis 1996 une série de Space Invaders, réalisés en mosaïques, sur les murs de grandes métropoles internationales.",
-  address: "3 Rue des Catalans"
+  address: "3 Rue des Catalans, 13007 Marseille"
 })
 invader1.photo.attach(io: File.open('./db/seed_pics/invader1.jpeg'), filename: 'invader1.jpeg', content_type: 'image/jpeg')
 invader1.save!
@@ -85,7 +85,7 @@ friche.save!
 invader2 = Hotspot.create!({
   name: "Space invader - Le Petit Pernod",
   description: "Invader est un artiste de rue et mosaïste français, né en France en 1969. Il installe depuis 1996 une série de Space Invaders, réalisés en mosaïques, sur les murs de grandes métropoles internationales.",
-  address: "3 rue des trois rois"
+  address: "3 rue des trois rois, 13006 Marseille"
 })
 invader2.photo.attach(io: File.open('./db/seed_pics/invader2.jpeg'), filename: 'invader2.jpeg', content_type: 'image/jpeg')
 invader2.save!
