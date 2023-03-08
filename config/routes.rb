@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :categories, only: %i[index show]
 
-  resources :requests, only: %i[new create]
+  resources :requests, only: %i[new show create]
 end

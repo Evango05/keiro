@@ -5,14 +5,23 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
+    @request.user = current_user
+    @request.category = params[:request][:category]
+    @request.category = @request.category.drop(1)
+
     @request.save
     # no need to create a view for create
-    redirect_to itinerary_path(@itinerary)
+    redirect_to request_path(@request)
+  end
+
+  def show
+    @request = Request.find(params[:id])
+    raise
   end
 
   private
 
   def request_params
-    params.require(:request).permit(:constant_categories)
+    params.require(:request).permit(:distance, :category)
   end
 end
