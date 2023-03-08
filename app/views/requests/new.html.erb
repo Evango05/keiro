@@ -6,18 +6,28 @@
   </div>
 
 
-  <div class="row simple-form">
+  <div class="row simple-form" data-controller="geolocate">
     <%= simple_form_for @request do |f| %>
       <%= f.input :distance%>
 
       <%= f.input :category,
                 multiple: true,
                 as: :check_boxes,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: {class: 'category-selector', :multiple => true},
+                collection_wrapper_tag: "div",
+                collection_wrapper_class: "category-wrapper",
+                item_wrapper_class: "category-item",
+                input_html: {class: "category-selector", :multiple => true},
                 collection: Request::CATEGORIES %>
+
+
+      <%= f.input :longitude,
+                input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"}
+      %>
+
+
+      <%= f.input :latitude,
+                input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}
+      %>
 
       <%= f.button :submit, class: "btn-primary"%>
     <% end %>

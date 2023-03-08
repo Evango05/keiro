@@ -6,8 +6,12 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user = current_user
+
     @request.category = params[:request][:category]
     @request.category = @request.category.drop(1)
+
+    @request.longitude = params[:request][:longitude]
+    @request.latitude = params[:request][:latitude]
 
     @request.save
     # no need to create a view for create
@@ -16,12 +20,13 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    raise
-  end
 
+  end
+  
   private
 
   def request_params
-    params.require(:request).permit(:distance, :category)
+    params.require(:request).permit(:distance, :category, :longitude, :latitude)
   end
+
 end
