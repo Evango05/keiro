@@ -19,13 +19,14 @@
                 input_html: {class: "category-selector", :multiple => true},
                 collection: Request::CATEGORIES %>
 
-
       <%= f.input :longitude,
+                as: :hidden,
                 input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"}
       %>
 
 
-      <%= f.input :latitude,
+      <%= f.input  :latitude,
+                as: :hidden,
                 input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}
       %>
 
