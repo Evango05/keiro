@@ -10,21 +10,8 @@
     </div>
   </div>
 
-
-
   <div class="row simple-form" data-controller="geolocate">
     <%= simple_form_for @request do |f| %>
-      <%= f.input :distance%>
-
-      <%= f.input :category,
-                multiple: true,
-                as: :check_boxes,
-                collection_wrapper_tag: "div",
-                collection_wrapper_class: "category-wrapper",
-                item_wrapper_class: "category-item",
-                input_html: {class: "category-selector", :multiple => true},
-                collection: Request::CATEGORIES %>
-
       <%= f.input :longitude,
                 as: :hidden,
                 input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"}
@@ -38,11 +25,22 @@
 
   </div><br>
 
-  <div class = "map"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+      <div class = "map"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+      <%= f.input :distance%>
+
+      <%= f.input :category,
+                multiple: true,
+                as: :check_boxes,
+                collection_wrapper_tag: "div",
+                collection_wrapper_class: "category-wrapper",
+                item_wrapper_class: "category-item",
+                input_html: {class: "category-selector", :multiple => true},
+                collection: Request::CATEGORIES %>
 
       <%= f.button :submit, "LOAD", class: "big_blue_button"%>
     <% end %>
