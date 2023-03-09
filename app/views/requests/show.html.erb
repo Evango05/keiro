@@ -9,9 +9,8 @@
     <%= @request.latitude %>
     </p>
     <p>longitude:
-    <%= @request.latitude %>
+    <%= @request.longitude %>
     </p>
-
 
     <p>distance selectionnée:
     <%= @request.distance %> km</p>
@@ -23,7 +22,40 @@
     <% end %>
 
     </ul>
-
   </div>
+
+
+    <% hotspots_id = [] %>
+    <%  @hotspots.each do |hotspot| %>
+    <%  hotspots_id << hotspot.id %>
+    <%  end %>
+
+    <div class="row simple-form">
+      <%= simple_form_for @itinerary do |f| %>
+        <%= f.input :length,
+                    as: :hidden,
+                    input_html: {value: @request.distance}%>
+
+        <%= f.input :request_id,
+                    as: :hidden,
+                    input_html: {value: @request.id}%>
+
+        <%# <%= f.input :latitude,
+                    # as: :hidden,
+                    value: @request.latitude%>
+
+        <%# <%= f.input :longitude,
+                    # as: :hidden,
+                    value: @request.longitude%>
+
+        <%= f.input :selected_hotspots_id,
+                    as: :hidden,
+                    input_html: {value: hotspots_id}%>
+
+        <%= f.button :submit, class: "btn-primary" %>
+      <% end %>
+    </div>
+
+
 
 </div>
