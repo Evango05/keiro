@@ -29,6 +29,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @itinerary = Itinerary.new
 
     @selected_cat = @request.category
     @categories = Category.all
@@ -39,6 +40,9 @@ class RequestsController < ApplicationController
       end
     end
     @hotspots = array.flatten
+
+    # redirect_to proc { create_itinerary_url(@itinerary) }
+    # probleme ici --> comment appeler la méthode create de itinerary ?
   end
 
 
