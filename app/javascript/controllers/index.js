@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import GeolocateController from "./geolocate_controller"
 application.register("geolocate", GeolocateController)
 
