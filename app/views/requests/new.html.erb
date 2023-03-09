@@ -31,19 +31,28 @@
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
 
-      <%= f.input :distance%>
+      <div class="distance_box">
+        <div class="distancecontainertext">
+          <p id=textdistance>X KM</p>
+        </div>
+        <div class="distancecontainerslider text-center">
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+      </div>
 
-      <%= f.input :category,
-                multiple: true,
-                as: :check_boxes,
-                collection_wrapper_tag: "div",
-                collection_wrapper_class: "category-wrapper",
-                item_wrapper_class: "category-item",
-                input_html: {class: "category-selector", :multiple => true},
-                collection: Request::CATEGORIES %>
+       <%= f.input :distance %>
 
-      <%= f.button :submit, "LOAD", class: "big_blue_button"%>
-    <% end %>
-  </div><br>
+        <%= f.input :category,
+                  multiple: true,
+                  as: :check_boxes,
+                  collection_wrapper_tag: "div",
+                  collection_wrapper_class: "category-wrapper",
+                  item_wrapper_class: "category-item",
+                  input_html: {class: "category-selector", :multiple => true},
+                  collection: Request::CATEGORIES %>
+
+         <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+        <% end %>
+        <br>
 
 </div>
