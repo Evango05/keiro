@@ -1,13 +1,6 @@
 <div class="container">
 
-  <div class="row page-title">
-    <h1>Requests#new</h1>
-    <p>Wanna find me? Look in --> app/views/requests/new.html.erb</p>
-  </div>
-
-
-
-  <div id="carouselExample" class="carousel slide">
+  <div id="carouselExample" class="carousel slide box">
     <div class="carousel-inner">
       <% @hotspots.each_with_index do |hotspot, index| %>
         <% if index == 0 %>
@@ -21,16 +14,17 @@
         <% end %>
       <% end %>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
+
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
 
   <div class="row simple-form" data-controller="geolocate">
     <%= simple_form_for @request do |f| %>
@@ -56,8 +50,6 @@
                 input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}
       %>
 
-      <%= f.button :submit, class: "btn-primary"%>
-    <% end %>
   </div><br>
 
   <div style="width: 100%; height: 600px;"
@@ -65,5 +57,9 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
+      <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+    <% end %>
+  </div><br>
 
 </div>
