@@ -33,12 +33,11 @@
 
 
       <div class="distance_box" data-controller="distance">
-      <p class = "slider" data-distance-target="distanceinject">1 km</p>
-        <%= f.input :distance,
-                    label: false,
-                    as: :range,
-                    input_html: {value: 1, max: 50, class: "slider", data: { action: "click->distance#update", distance_target: "distanceinput" }},
-                    label_html: {class: "slider"}%>
+          <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
+          <%= f.input :distance,
+                        label: false,
+                        as: :range,
+                        input_html: {value: 1, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
       </div>
 
         <%= f.input :category,

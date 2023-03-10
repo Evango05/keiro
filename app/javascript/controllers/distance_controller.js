@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   update() {
+    console.log("update");
     this.distanceinjectTarget.innerHTML = `${this.distanceinputTarget.value} km`;
   }
 }
