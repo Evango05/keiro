@@ -6,7 +6,6 @@ export default class extends Controller {
 static targets = ["longitude", "latitude"]
 
   connect() {
-    console.log( "coucou, salut comment ca va? " )
 
     const options = {
       enableHighAccuracy: true,

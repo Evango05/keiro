@@ -4,5 +4,4 @@ class Request < ApplicationRecord
   has_many :categories, through: :catreqs
 
   CATEGORIES = ["Architecture", "Parc", "Street Art", "Point de vue", "Urbex"]
-
 end

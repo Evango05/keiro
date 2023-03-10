@@ -28,9 +28,11 @@ export default class extends Controller {
         showUserHeading: true
       })
     )
+
+    console.log(typeof(this.markers))
   }
 
-  
+
 
 
 

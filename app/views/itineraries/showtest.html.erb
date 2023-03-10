@@ -1,0 +1,181 @@
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Delivery App</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      /* here we add the truc class to the markers */
+      .truck {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: #3887be;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+
+     <%# ---------------------- AU DESSUS HEAD QUI SERT A RIEN ------------------------ %>
+
+  <body>
+    <div class="container" p-5>
+        <%= @itinerary.length %>
+
+
+
+        <h1>Here my map from mapbox</h1>
+          <div style="width: 100%; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+
+        <% @hotspot_instances.each do |hotspot| %>
+          <%= hotspot.name %>
+        <% end %>
+
+
+     <%# ---------------------- LA JE FAIS DES TESTS DE DISPLAY ------------------------ %>
+        <%= @passingcoordinates %>
+
+
+
+        <%# ---------------------- MAPBOX OPTIMIZATION API ------------------------ %>
+
+        <h1>Here my map from optimization API</h1>
+
+        <%# ----ici on voudra lui rajouter id de map mais si je le fais ça beug --- %>
+
+          <div style="width: 100%; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+
+
+
+        <%# ----ça c'est le code qu'on nous donne mais  --- %>
+
+        <div id='map'></div>
+
+
+
+        <script>
+
+        // ADD TRUCK LOCATION
+          const truckLocation = [-83.093, 42.376];
+          const warehouseLocation = [-83.083, 42.363];
+          const lastAtRestaurant = 0;
+          const keepTrack = [];
+          const pointHopper = {};
+
+          // Create an empty GeoJSON feature collection, which will be used as the data source for the route before users add any new data
+          const nothing = turf.featureCollection([]);
+
+
+          // Create a GeoJSON feature collection for the warehouse
+          // la collection de point
+          // where the delivery truck has to go to pick up items to deliver.
+          // Add the code below before your map.on('load', () => {}); callback.
+          const warehouse = turf.featureCollection([turf.point(warehouseLocation)]);
+
+          // la collection de points par lesquels on va passer
+          const dropoffs = turf.featureCollection([]);
+
+
+
+          // Add your access token
+          mapboxgl.accessToken = ENV['MAPBOX_API_KEY'] ;
+
+          // Initialize a map
+          const map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/light-v11', // stylesheet location
+            center: truckLocation, // starting position
+            zoom: 12 // starting zoom
+          });
+
+
+
+          // ici la gueule d'une requete API pour un trajet
+
+
+          https://api.mapbox.com/optimized-trips/v1/mapbox/driving/-122.42,37.78;-122.45,37.91;-122.48,37.73?access_token=YOUR_MAPBOX_ACCESS_TOKEN
+
+
+          // request async de charge de la page
+
+          map.on('load', async () => {
+            const marker = document.createElement('div');
+            marker.classList = 'truck';
+
+            // Create a new marker
+            new mapboxgl.Marker(marker).setLngLat(truckLocation).addTo(map);
+
+
+            // ici on insère la route
+            map.addSource('route', {
+              type: 'geojson',
+              data: nothing
+            });
+
+            map.addLayer(
+              {
+                id: 'routeline-active',
+                type: 'line',
+                source: 'route',
+                layout: {
+                  'line-join': 'round',
+                  'line-cap': 'round'
+                },
+                paint: {
+                  'line-color': '#3887be',
+                  'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 22, 12]
+                }
+              },
+              'waterway-label'
+            );
+
+
+
+
+          });
+
+          //  REQUEST FETCH
+
+          function ()
+
+          function assembleQueryURL() {
+
+            const startcoordinates = [trucklocation];
+
+            const passingcoordinates = [];
+
+
+              //return https://api.mapbox.com/optimized-trips/v1/mapbox/driving/-122.42,37.78;-122.45,37.91;-122.48,37.73?access_token=YOUR_MAPBOX_ACCESS_TOKEN
+
+          }
+
+        </script>
+
+
+    </div>
+
+  </body>
+</html>
