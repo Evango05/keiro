@@ -40,14 +40,16 @@
                         input_html: {value: 1, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
       </div>
 
+      <div>
         <%= f.input :category,
+                  as: :check_boxes,
+                  label: '',
+                  input_html: {class: "tag-selector"},
+                  item_wrapper_class: 'tag-item',
                   multiple: true,
                   as: :check_boxes,
-                  collection_wrapper_tag: "div",
-                  collection_wrapper_class: "category-wrapper",
-                  item_wrapper_class: "category-item",
-                  input_html: {class: "category-selector", :multiple => true},
                   collection: Request::CATEGORIES %>
+      </div>
 
          <%= f.button :submit, "LOAD", class: "big_blue_button"%>
         <% end %>
