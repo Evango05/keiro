@@ -61,3 +61,21 @@
   border-radius: 30px;
   text-align: center;
 }
+
+.btn-trajet {
+  position: absolute;
+  background-color: #1A15FF;
+  top: 0px;
+  left: 0px;
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+  }
+}

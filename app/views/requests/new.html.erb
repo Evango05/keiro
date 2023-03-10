@@ -10,7 +10,8 @@
     </div>
   </div>
 
-  <div class="row simple-form" data-controller="geolocate">
+  <div class="row simple-form btn-trajet-container" data-controller="geolocate">
+    <div class="btn-trajet"><a href="#" class="">Anciens Trajets</a></div>
     <%= simple_form_for @request do |f| %>
       <%= f.input :longitude,
                 as: :hidden,
