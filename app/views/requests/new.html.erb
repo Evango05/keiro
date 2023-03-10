@@ -4,7 +4,7 @@
     <div class="menu--wrapper">
       <% @hotspots.each do |hotspot| %>
         <div class="menu--item">
-          <figure><%= image_tag(hotspot.photo) %></figure>
+          <figure><%= cl_image_tag hotspot.photo.key %></figure>
         </div>
       <% end %>
     </div>
