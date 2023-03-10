@@ -10,6 +10,9 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
+import DistanceController from "./distance_controller"
+application.register("distance", DistanceController)
+
 import GeolocateController from "./geolocate_controller"
 application.register("geolocate", GeolocateController)
 

@@ -31,16 +31,15 @@
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
 
-      <div class="distance_box">
-        <div class="distancecontainertext">
-          <p id=textdistance>X KM</p>
-        </div>
-        <div class="distancecontainerslider text-center">
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        </div>
-      </div>
 
-       <%= f.input :distance %>
+      <div class="distance_box" data-controller="distance">
+      <p class = "slider" data-distance-target="distanceinject">1 km</p>
+        <%= f.input :distance,
+                    label: false,
+                    as: :range,
+                    input_html: {value: 1, max: 50, class: "slider", data: { action: "click->distance#update", distance_target: "distanceinput" }},
+                    label_html: {class: "slider"}%>
+      </div>
 
         <%= f.input :category,
                   multiple: true,
