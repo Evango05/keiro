@@ -14,19 +14,19 @@
 // }
 
 
-@media screen and (max-width: 500px) {
-  .menu {
-    height: 20vh !important;
-  }
-}
+// @media screen and (max-width: 500px) {
+//   .menu {
+//   }
+// }
 
 .menu {
   overflow: hidden;
   cursor: grab;
-  width: 100%;
+  width: 75% !important;
+  float: right;
   position: relative;
   z-index: 1;
-  height: 40vh;
+  height: 10vh !important;
 
   &.is-dragging {
     cursor: grabbing;
@@ -38,7 +38,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 75% !important;
   }
 
   &--item {
@@ -47,9 +47,8 @@
     z-index: 1;
     top: 0;
     left: 0;
-    width: 30vw;
     height: 50%;
-    padding: 0 1.5vw;
+    padding: -1 1.5vw;
     overflow: hidden;
 
     @media (max-width: 767px) {
@@ -65,10 +64,11 @@
       position: absolute;
       z-index: 1;
       display: block;
+      gap: 16px;
       user-select: none;
       -webkit-appearance: none;
       padding: 0;
-      border: none;
+      border: 4px;
       outline: none;
       box-shadow: none;
       cursor: pointer;
@@ -94,7 +94,7 @@
         position: absolute;
         z-index: 2;
         bottom: 1vw;
-        left: 1vw;
+        left: 2vw;
         display: inline-block;
         content: "0" counter(count);
         color: #ffffff;
