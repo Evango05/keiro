@@ -14,19 +14,19 @@
 // }
 
 
-@media screen and (max-width: 500px) {
-  .menu {
-    height: 20vh !important;
-  }
-}
+// @media screen and (max-width: 500px) {
+//   .menu {
+//   }
+// }
 
 .menu {
   overflow: hidden;
   cursor: grab;
-  width: 100%;
+  width: 75% !important;
+  float: right;
   position: relative;
   z-index: 1;
-  height: 40vh;
+  height: 10vh !important;
 
   &.is-dragging {
     cursor: grabbing;
@@ -38,7 +38,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 75% !important;
   }
 
   &--item {
@@ -142,3 +142,4 @@
     right: -100px;
   }
 }
+
