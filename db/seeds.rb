@@ -36,7 +36,7 @@ ndlg.save!
 
 corbu = Hotspot.create!({
   name: "Cité radieuse de Marseille",
-  description: "Elle est l’œuvre de l’architecte d’origine suisse Charles-Edouard Jeanneret, plus connu sous le nom de Le Corbusier. Première Unité d’Habitation (d’une série de 5), elle a été construite entre 1947 et 1952. Cette cité-jardin verticale, construction sur pilotis d’un ensemble de logements individuels insérés dans une structure collective est conçue comme un laboratoire pour un nouveau “système d’habitat”. La Cité radieuse comporte 337 appartements, de 23 types différents, qui constituent autant de logements confortables et modernes pour l’époque.",
+  description: "Elle est l'œuvre de l'architecte d'origine suisse Charles-Edouard Jeanneret, plus connu sous le nom de Le Corbusier. Première Unité d'Habitation (d'une série de 5), elle a été construite entre 1947 et 1952. Cette cité-jardin verticale, construction sur pilotis d'un ensemble de logements individuels insérés dans une structure collective est conçue comme un laboratoire pour un nouveau “système d'habitat”. La Cité radieuse comporte 337 appartements, de 23 types différents, qui constituent autant de logements confortables et modernes pour l'époque.",
   address: "280 Boulevard Michelet, 13008 Marseille"
 })
 corbu.photo.attach(io: File.open('./db/seed_pics/corbu.jpeg'), filename: 'corbu.jpeg', content_type: 'image/jpeg')
@@ -44,7 +44,7 @@ corbu.save!
 
 charite = Hotspot.create!({
   name: "La Vieille Charité",
-  description: "Lieu emblématique de Marseille, la Vieille Charité est nichée au cœur du Panier, le noyau historique de la ville. Merveille de l’architecture du XVIIe siècle, La Vieille Charité symbolise à la fois la richesse du patrimoine marseillais et offre à la ville un haut lieu culturel. Restaurée, la Vieille Charité est devenue, depuis 1986, un centre pluridisciplinaire à vocation scientifique et culturelle de la Ville de Marseille. Elle est classée au titre des Monuments Historiques.",
+  description: "Lieu emblématique de Marseille, la Vieille Charité est nichée au cœur du Panier, le noyau historique de la ville. Merveille de l'architecture du XVIIe siècle, La Vieille Charité symbolise à la fois la richesse du patrimoine marseillais et offre à la ville un haut lieu culturel. Restaurée, la Vieille Charité est devenue, depuis 1986, un centre pluridisciplinaire à vocation scientifique et culturelle de la Ville de Marseille. Elle est classée au titre des Monuments Historiques.",
   address: "2 Rue de la Charité, 13002 Marseille"
 })
 charite.photo.attach(io: File.open('./db/seed_pics/charite.jpeg'), filename: 'charite.jpeg', content_type: 'image/jpeg')
