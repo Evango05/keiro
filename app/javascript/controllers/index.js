@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import Reveal from 'stimulus-reveal-controller'
+application.register('reveal', Reveal)
+
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
