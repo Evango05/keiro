@@ -1,24 +1,28 @@
-<div class="container" p-5>
+<div class="container"  >
 
-    <h1>Here my map from mapbox</h1>
+    <div class="carto"  >
+      <h1>Here my map from mapbox</h1>
       <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          >
       </div>
+    </div>
 
     <%# <% @hotspot_instances.each do |hotspot| %>
       <%# <%= hotspot.name %>
     <%# <% end %>
 
+    <div class="pass-coordinates" data-controller="passingcoordinates" >
+      <p>jattends que ca saffiche</p>
+    </div>
 
   <%# ---------------------- LA JE FAIS DES TESTS DE DISPLAY ------------------------ %>
 
-  <%# <%= @hotspot_instances %>
-
-
-      <h1>Et voici mes super infos que je vais envoyer à mapbox</h1>
-
-    <p>la distance de mon itinéraire:   <%= @itinerary.length %> km</p>
+  <div >
+    <h1>Et voici mes super infos que je vais envoyer à mapbox</h1>
+    <p>la distance de mon itinéraire:  <%= @itinerary.length %> km</p>
     <p>les coordonnéees des points de mon itinéraire: <br><%= @passingcoordinates %> </p>
+  </div>
 </div>

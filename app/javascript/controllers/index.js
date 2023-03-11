@@ -22,5 +22,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import SendRequestController from "./sendrequest_controller"
-application.register("sendrequest", SendRequestController)
+import PassingcoordinatesController from "./passingcoordinates_controller"
+application.register("passingcoordinates", PassingcoordinatesController)
+
+import SendrequestController from "./sendrequest_controller"
+application.register("sendrequest", SendrequestController)
