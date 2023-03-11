@@ -8,6 +8,7 @@
     "@popperjs/core": "^2.11.6",
     "@turf/turf": "^6.5.0",
     "bootstrap": "^5.2.3",
+    "flickity": "^3.0.0",
     "geocoder": "^0.2.3",
     "mapbox": "^1.0.0-beta10",
     "webpack": "^5.75.0",

@@ -1,44 +1,20 @@
 <div class="container">
 
-  <div id="carouselExample" class="carousel slide box">
-    <div class="carousel-inner">
-      <% @hotspots.each_with_index do |hotspot, index| %>
-        <% if index == 0 %>
-          <div class="carousel-item active">
-            <%= image_tag hotspot.photo, class:"d-block w-100" %>
-          </div>
-        <% else %>
-          <div class="carousel-item">
-            <%= image_tag hotspot.photo, class:"d-block w-100" %>
-          </div>
-        <% end %>
+  <div class="menu", data-controller="carousel">
+    <div class="menu--wrapper">
+      <% @hotspots.each do |hotspot| %>
+        <div class="menu--item">
+          <figure><%= cl_image_tag hotspot.photo.key, height: 300, width: 400, crop: :fill %></figure>
+        </div>
       <% end %>
     </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 
-  <div class="row simple-form" data-controller="geolocate" >
+
+  <div class="row simple-form btn-trajet-container" data-controller="geolocate">
+    <div class="btn-trajet"><a href="#" class="">Anciens Trajets</a></div>
+
     <%= simple_form_for @request do |f| %>
-      <%= f.input :distance%>
-
-      <%= f.input :category,
-                multiple: true,
-                as: :check_boxes,
-                collection_wrapper_tag: "div",
-                collection_wrapper_class: "category-wrapper",
-                item_wrapper_class: "category-item",
-                input_html: {class: "category-selector", :multiple => true},
-                collection: Request::CATEGORIES %>
-
       <%= f.input :longitude,
                 as: :hidden,
                 input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"}
@@ -52,15 +28,36 @@
 
   </div><br>
 
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 
-      <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+      <div class = "map"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
 
-    <% end %>
-  </div><br>
+
+      <div class="distance_box" data-controller="distance">
+          <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
+          <%= f.input :distance,
+                        label: false,
+                        as: :range,
+                        input_html: {value: 1, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
+      </div>
+
+      <div>
+        <%= f.input :category,
+                  as: :check_boxes,
+                  label: '',
+                  input_html: {class: "tag-selector"},
+                  item_wrapper_class: 'tag-item',
+                  multiple: true,
+                  as: :check_boxes,
+                  collection: Request::CATEGORIES %>
+      </div>
+
+         <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+        <% end %>
+        <br>
+
 
 </div>
