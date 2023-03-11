@@ -12,7 +12,7 @@
 
 
   <div class="row simple-form btn-trajet-container" data-controller="geolocate">
-    <div class="btn-trajet"><a href="#" class="">Anciens Trajets</a></div>
+    <div class="btn-trajet"><a href="<%= itineraries_path %>" class="">Anciens Trajets</a></div>
 
     <%= simple_form_for @request do |f| %>
       <%= f.input :longitude,
