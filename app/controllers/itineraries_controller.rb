@@ -38,16 +38,11 @@ class ItinerariesController < ApplicationController
 
   def show
     @itinerary = Itinerary.find(params[:id])
-
-
-
-
     @hotspot_instances = []
 
     @itinerary.selected_hotspot_ids.each do |hotspot|
       @hotspot_instances << Hotspot.find(hotspot.to_i)
     end
-
 
     @markers = @hotspot_instances.map do |hotspot|
       {
@@ -58,22 +53,18 @@ class ItinerariesController < ApplicationController
 
     # j'instancie mon array de coordonnées
     @passingcoordinates = []
-
     # j'y ajoute ma coordonnée de départ
     @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
-
     #  je compile
     @hotspot_instances.each do |hotspot|
       @passingcoordinates << [hotspot.longitude, hotspot.latitude]
     end
-
-
     # j'y ajoute ma coordonnée de fin
-
     @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
+    # j'interpole le tout au bon format pour la requete API
+    @passingcoordinates = @passingcoordinates.map {|coord| coord.join(", ") }.join("; ")
 
-    # j'interpole ce que je peux
-    # @passingcoordinates = @passingcoordinates.join(";")
+
   end
 
 

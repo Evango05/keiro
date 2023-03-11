@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["distanceinput", "distanceinject"]
 
   connect() {
-    console.log("coucou");
+    console.log("coucou cest le controller distance");
   }
 
   update() {
