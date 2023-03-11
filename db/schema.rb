@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_170109) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_11_175545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_170109) do
     t.datetime "updated_at", null: false
     t.bigint "request_id", null: false
     t.string "selected_hotspot_ids", default: [], array: true
+    t.string "name", default: "Itinéraire n°"
     t.index ["request_id"], name: "index_itineraries_on_request_id"
   end
 
