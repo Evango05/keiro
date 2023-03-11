@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" data-controller="reveal" data-reveal-hidden-class="d-none">
 
   <div class="menu", data-controller="carousel">
     <div class="menu--wrapper">
       <% @hotspots.each do |hotspot| %>
-        <div class="menu--item">
+        <div class="menu--item" data-action="touchend->reveal#toggle">
           <figure><%= cl_image_tag hotspot.photo.key, height: 300, width: 400, crop: :fill %></figure>
         </div>
       <% end %>
@@ -27,6 +27,16 @@
       %>
 
   </div><br>
+
+   <div data-reveal-target="item" class="d-none mt-5 grey_box">
+    <div class="white_container">
+        <p>name</p>
+        <p>description</p>
+     </div>
+
+    </div>
+
+
 
 
       <div class = "map"

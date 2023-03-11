@@ -11,6 +11,7 @@
     "flickity": "^3.0.0",
     "geocoder": "^0.2.3",
     "mapbox": "^1.0.0-beta10",
+    "stimulus-reveal-controller": "^4.1.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
