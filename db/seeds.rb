@@ -2,10 +2,12 @@ puts "Destroying users, categories, hotspots, itineraries and joint tables"
 
 Hotcat.destroy_all
 Hotiti.destroy_all
+Itinerary.destroy_all
+Request.destroy_all
 User.destroy_all
 Category.destroy_all
 Hotspot.destroy_all
-Itinerary.destroy_all
+
 
 puts "Creating User Charlie (test@gmail.com - 123456)..."
 
