@@ -12,18 +12,73 @@ class ItinerariesController < ApplicationController
   def create
     @itinerary = Itinerary.new(itinerary_params)
 
-    @hotspots_ids = params[:itinerary][:hotspots_id]
-
     @itinerary.request = Request.find(params[:itinerary][:request_id])
+
+
+    @hotspot_ids = params[:itinerary][:selected_hotspots_id]
+
+    @hotspot_ids = @hotspot_ids.split(" ");
+
+
+
+    @itinerary.selected_hotspot_ids = @hotspot_ids
+
+
+
 
     @itinerary.save
 
+    if @itinerary.save
+      redirect_to itinerary_path(@itinerary)
+    end
     # code stops here: a first instance of itinerary is being saved
     # now send it to mapbox
   end
 
 
   def show
+    @itinerary = Itinerary.find(params[:id])
+
+
+
+
+    @hotspot_instances = []
+
+    @itinerary.selected_hotspot_ids.each do |hotspot|
+      @hotspot_instances << Hotspot.find(hotspot.to_i)
+    end
+
+
+    @markers = @hotspot_instances.map do |hotspot|
+      {
+        lat: hotspot.latitude,
+        lng: hotspot.longitude
+      }
+    end
+
+    # j'instancie mon array de coordonnées
+    @passingcoordinates = []
+
+    # j'y ajoute ma coordonnée de départ
+    @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
+
+    #  je compile
+    @hotspot_instances.each do |hotspot|
+      @passingcoordinates << [hotspot.longitude, hotspot.latitude]
+    end
+
+
+    # j'y ajoute ma coordonnée de fin
+
+    @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
+
+    # j'interpole ce que je peux
+    # @passingcoordinates = @passingcoordinates.join(";")
+  end
+
+
+  def update
+    raise
   end
 
   private
@@ -34,18 +89,3 @@ class ItinerariesController < ApplicationController
 
 
 end
-
-
-
-
-
-# create_table "itineraries", force: :cascade do |t|
-#   t.integer "duration"
-#   t.float "length"
-#   t.float "elevation"
-#   t.boolean "favorite"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.bigint "request_id", null: false
-#   t.index ["request_id"], name: "index_itineraries_on_request_id"
-# end

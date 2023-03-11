@@ -30,26 +30,48 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @itinerary = Itinerary.new
+    @hotspots = Hotspot.all
 
     @selected_cat = @request.category
     @categories = Category.all
     array = []
+
     @selected_cat.each do |cat|
       @categories.each do |category|
-          array << category.hotspots if cat == category.name
+        if cat == category.name
+          array << Category.find(category.id)
+        end
       end
     end
-    @hotspots = array.flatten
 
-    # redirect_to proc { create_itinerary_url(@itinerary) }
-    # probleme ici --> comment appeler la méthode create de itinerary ?
+    @selected_hotspots_ids = []
+
+
+
+    array.each do |category|
+      @selected_hotspots_ids << category.hotspots.ids
+    end
+
+
+
+    @selected_hotspots_ids = @selected_hotspots_ids.flatten.uniq!
+
+    #DEBUG == ici @selected_hotspots_ids fonctionne parfaitement
+    # et est transformé par le form en  :selected_hotspots_id
+
+
+    # # on définit nos coordonnées de départ
+    # @startcoordinates = [@request.longitude, @request.latitude]
+
+
+
+
   end
-
 
   private
 
   def request_params
-    params.require(:request).permit(:distance, :category, :longitude, :latitude)
+    params.require(:request).permit(:id, :distance, :category, :longitude, :latitude, :selected_hotspots_id)
   end
 
 end
