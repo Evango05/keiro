@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index show]
 
   resources :requests, only: %i[new show create]
+
+  get '/users/:id', to: 'users#show', as: 'user'
 end

@@ -29,6 +29,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+
     @itinerary = Itinerary.new
     @hotspots = Hotspot.all
 
@@ -46,25 +47,17 @@ class RequestsController < ApplicationController
 
     @selected_hotspots_ids = []
 
-
-
     array.each do |category|
       @selected_hotspots_ids << category.hotspots.ids
     end
-
-
 
     @selected_hotspots_ids = @selected_hotspots_ids.flatten.uniq!
 
     #DEBUG == ici @selected_hotspots_ids fonctionne parfaitement
     # et est transformé par le form en  :selected_hotspots_id
 
-
     # # on définit nos coordonnées de départ
     # @startcoordinates = [@request.longitude, @request.latitude]
-
-
-
 
   end
 
