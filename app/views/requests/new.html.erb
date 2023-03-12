@@ -3,13 +3,12 @@
   <div class="menu", data-controller="carousel">
     <div class="menu--wrapper">
       <% @hotspots.each do |hotspot| %>
-        <div class="menu--item" data-action="long-press->reveal#toggle" data-long-press-delay="400">
-          <figure><%= cl_image_tag hotspot.photo.key, height: 300, width: 400, crop: :fill %></figure>
+        <div class="menu--item" data-action="long-press->reveal#toggle" data-long-press-delay="400" data-reveal-target="photo">
+          <figure><%= cl_image_tag(hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale", :effect=>"art:audrey") %></figure>
         </div>
       <% end %>
     </div>
   </div>
-
 
   <div class="row simple-form btn-trajet-container" data-controller="geolocate">
     <div class="btn-trajet"><a href="<%= itineraries_path %>" class="">Anciens Trajets</a></div>
