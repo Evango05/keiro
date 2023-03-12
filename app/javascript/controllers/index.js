@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import Reveal from 'stimulus-reveal-controller'
-application.register('reveal', Reveal)
-
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
@@ -27,6 +24,9 @@ application.register("map", MapController)
 
 import PassingcoordinatesController from "./passingcoordinates_controller"
 application.register("passingcoordinates", PassingcoordinatesController)
+
+import RevealController from "./reveal_controller"
+application.register("reveal", RevealController)
 
 import SendrequestController from "./sendrequest_controller"
 application.register("sendrequest", SendrequestController)
