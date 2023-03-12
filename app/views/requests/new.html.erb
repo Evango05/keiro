@@ -3,7 +3,7 @@
   <div class="menu", data-controller="carousel">
     <div class="menu--wrapper">
       <% @hotspots.each do |hotspot| %>
-        <div class="menu--item" data-action="touchend->reveal#toggle">
+        <div class="menu--item" data-action="long-press->reveal#toggle" data-long-press-delay="400">
           <figure><%= cl_image_tag hotspot.photo.key, height: 300, width: 400, crop: :fill %></figure>
         </div>
       <% end %>
