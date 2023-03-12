@@ -2,17 +2,6 @@ class HotspotsController < ApplicationController
   before_action :set_hotspot, only: %i[show edit update destroy]
 
   # GET /hotspots or /hotspots.json
-  def index
-    @hotspots = Hotspot.all
-    @markers = @hotspots.geocoded.map do |hotspot|
-      {
-        lat: hotspot.latitude,
-        lng: hotspot.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { hotspot: hotspot }),
-        marker_html: render_to_string(partial: "marker", locals: { hotspot: hotspot })
-      }
-    end
-  end
 
   # GET /hotspots/1 or /hotspots/1.json
   def show
