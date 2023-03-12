@@ -8,8 +8,8 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-
-          <%= link_to edit_user_registration_path do %>
+<%# ici updater la navbar avec le lien de la photo de user ?%>
+          <%= link_to user_path(@user) do %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/adrienlupo", class: "avatar dropdown-toggle" %>
             <% end %>
 

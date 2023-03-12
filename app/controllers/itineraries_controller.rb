@@ -1,10 +1,6 @@
 class ItinerariesController < ApplicationController
-
   def index
     @itineraries = Itinerary.all
-
-
-
   end
 
   def new
@@ -17,17 +13,11 @@ class ItinerariesController < ApplicationController
 
     @itinerary.request = Request.find(params[:itinerary][:request_id])
 
-
     @hotspot_ids = params[:itinerary][:selected_hotspots_id]
 
-    @hotspot_ids = @hotspot_ids.split(" ");
-
-
+    @hotspot_ids = @hotspot_ids.split(" ")
 
     @itinerary.selected_hotspot_ids = @hotspot_ids
-
-
-
 
     @itinerary.save
 
@@ -37,7 +27,6 @@ class ItinerariesController < ApplicationController
     # code stops here: a first instance of itinerary is being saved
     # now send it to mapbox
   end
-
 
   def show
     @itinerary = Itinerary.find(params[:id])
@@ -65,11 +54,8 @@ class ItinerariesController < ApplicationController
     # j'y ajoute ma coordonnée de fin
     @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
     # j'interpole le tout au bon format pour la requete API
-    @passingcoordinates = @passingcoordinates.map {|coord| coord.join(", ") }.join("; ")
-
-
+    @passingcoordinates = @passingcoordinates.map { |coord| coord.join(", ") }.join("; ")
   end
-
 
   def update
     raise
@@ -78,8 +64,6 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:duration, :length, :elevation,)
+    params.require(:itinerary).permit(:duration, :length, :elevation)
   end
-
-
 end
