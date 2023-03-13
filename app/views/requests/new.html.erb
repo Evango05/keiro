@@ -1,11 +1,13 @@
 <div class="container" data-controller="reveal" data-reveal-hidden-class="d-none">
 
   <div class="menu", data-controller="carousel">
-    <div class="menu--wrapper">
+    <div class="menu--wrapper" data-action="long-press->reveal#toggle">
+      <% index = 0 %>
       <% @hotspots.each do |hotspot| %>
-        <div class="menu--item" data-action="long-press->reveal#toggle" data-long-press-delay="400" data-reveal-target="photo">
+        <div class="menu--item"  data-action="touchend->reveal#show" data-long-press-delay="400" data-reveal-target="photo"data-reveal-index-param="<%= index %>" data-value= "<%= hotspot.name %>" data-value-2= "<%= hotspot.description %>" >
           <figure><%= cl_image_tag(hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale", :effect=>"art:audrey") %></figure>
         </div>
+        <% index += 1 %>
       <% end %>
     </div>
   </div>
