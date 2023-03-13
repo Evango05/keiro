@@ -11,8 +11,18 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.itineraryRouteValue.routes[0].geometry);
+    // console.log(this.itineraryRouteValue.routes[0].geometry);
 
+
+    // je définis une distance isochrone = à la moitié de ma distance
+    const contours_meters = this.itineraryRouteValue.routes[0].length / 2
+
+    // j'essaie de vérifier si mes points sont dans l'isochrone
+    this.itineraryRouteValue.routes[0].geometry.coordinates
+
+    https://api.mapbox.com/isochrone/v1/{profile}/{coordinates}?{contours_minutes|contours_meters}
+
+    // ca va jusqu'ici
 
     mapboxgl.accessToken = this.apiKeyValue;
 
@@ -39,8 +49,10 @@ export default class extends Controller {
           'line-cap': 'round'
         },
         'paint': {
+
           'line-color': '#1A15FF',
           'line-width': 6
+
         }
       });
     });
@@ -54,9 +66,5 @@ export default class extends Controller {
     points.forEach(marker => bounds.extend(marker))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0})
   }
-
-
-
-
 
 }
