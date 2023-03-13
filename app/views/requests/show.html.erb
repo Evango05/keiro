@@ -16,11 +16,14 @@
     <p>distance selectionnée:
     <%= @request.distance %> km</p>
 
+    <p>Hotspots ID correspondant aux categories cochés par le user</p>
+    <%= @selected_hotspot_ids %></p>
+
     <p>Hotspots correspondant aux categories cochés par le user</p>
+    <% @selected_hotspots.each do |h| %>
+    <%= h.name %></p>
+    <% end %>
 
-
-    <%# on réhydrate nos hotspot ici %>
-      <%# à venir %>
 
   </div>
 
