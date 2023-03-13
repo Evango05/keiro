@@ -38,6 +38,7 @@ class RequestsController < ApplicationController
     @categories = Category.all
     array = []
 
+
     @selected_cat.each do |cat|
       @categories.each do |category|
         if cat == category.name
@@ -47,6 +48,7 @@ class RequestsController < ApplicationController
     end
 
     @selected_hotspot_ids = []
+    @selected_hotspots = []
 
     array.each do |category|
       @selected_hotspot_ids << category.hotspots.ids
@@ -54,6 +56,16 @@ class RequestsController < ApplicationController
 
     @selected_hotspot_ids = @selected_hotspot_ids.flatten.uniq!
 
+
+    @selected_hotspot_ids.each do |id|
+      @hotspots.each do |hotspot|
+        if id == hotspot.id
+          @selected_hotspots << hotspot
+        end
+      end
+    end
+
+    # @selected_hotspots = @selected_hotspots[0]
     #DEBUG == ici @selected_hotspot_ids fonctionne parfaitement
     # et est transformé par le form en  :selected_hotspots_id
 
