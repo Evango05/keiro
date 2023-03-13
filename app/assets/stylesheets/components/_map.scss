@@ -11,7 +11,7 @@
   width: 100%;
   height: 515px;
   border-radius: 0.5em ;
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
@@ -33,10 +33,17 @@
   font-size: 2em;
 }
 
-.relative{
+.button-relative{
   position: relative;
   z-index: 2;
-  top: -41px;
+  top: -44px;
   opacity: 0.8;
   margin-left: 1.1%;
+}
+
+.reveal-relative {
+  position: relative;
+  z-index: 2;
+  top: -733px;
+  opacity: 0.85;
 }

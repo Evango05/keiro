@@ -24,21 +24,15 @@
                 as: :hidden,
                 input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}
       %>
-
   </div>
-   <div data-reveal-target="item" class="d-none mt-5 grey_box">
-      <div class="white_container">
-        <p>name</p>
-        <p>description</p>
-     </div>
-    </div>
-    <div class = "map"
+
+  <div class = "map"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+  </div>
 
-          <div class="relative">
+  <div class="button-relative">
         <%= f.input :category,
                   as: :check_boxes,
                   label: '',
@@ -47,16 +41,23 @@
                   multiple: true,
                   as: :check_boxes,
                   collection: Request::CATEGORIES %>
-      </div>
+  </div>
 
 
     <div class="distance_box" data-controller="distance">
           <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
           <%= f.input :distance,
-                        label: false,
-                        as: :range,
-                        input_html: {value: 0, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
+                      label: false,
+                      as: :range,
+                      input_html: {value: 0, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
       </div>
          <%= f.button :submit, "LOAD", class: "big_blue_button"%>
         <% end %>
+
+ <div class="reveal-relative">
+    <div data-reveal-target="item" class="d-none mt-5 grey_box">
+      <div class="white_container">
+      </div>
+     </div>
+  </div>
 </div>
