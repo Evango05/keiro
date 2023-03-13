@@ -14,48 +14,49 @@
 
   <div class="row simple-form btn-trajet-container" data-controller="geolocate">
     <div class="btn-trajet"><a href="<%= itineraries_path %>" class="">Anciens Trajets</a></div>
-
-    <%= simple_form_for @request do |f| %>
-      <%= f.input :longitude,
+        <%= simple_form_for @request do |f| %>
+        <%= f.input :longitude,
                 as: :hidden,
-                input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"}
-      %>
-      <%= f.input  :latitude,
+                input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"} %>
+        <%= f.input  :latitude,
                 as: :hidden,
-                input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}
-      %>
-  </div>
+                input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
+    </div>
+  <div >
 
-  <div class = "map"
+  <div
+    class = "map"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
-  <div class="button-relative">
-        <%= f.input :category,
-                  as: :check_boxes,
-                  label: '',
-                  input_html: {class: "tag-selector"},
-                  item_wrapper_class: 'tag-item',
-                  multiple: true,
-                  as: :check_boxes,
-                  fieldset_attr: {class: "inline-selector"},
-                  collection: Request::CATEGORIES %>
-  </div>
 
 
-    <div class="distance_box" data-controller="distance">
+    <div class="button-relative">
+          <%= f.input :category,
+                    as: :check_boxes,
+                    label: '',
+                    input_html: {class: "tag-selector"},
+                    item_wrapper_class: 'tag-item',
+                    multiple: true,
+                    as: :check_boxes,
+                    collection: Request::CATEGORIES %>
+    </div>
+   </div>
+
+  <div class="distance_box" data-controller="distance">
           <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
           <%= f.input :distance,
                       label: false,
                       as: :range,
                       input_html: {value: 0, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
-      </div>
-         <%= f.button :submit, "LOAD", class: "big_blue_button"%>
-        <% end %>
+  </div>
 
- <div class="reveal-relative">
+  <div>
+    <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+    <% end %>
+  </div>
+
+  <div class="reveal-relative">
     <div data-reveal-target="item" class="d-none mt-5 grey_box">
       <div class="white_container">
       </div>

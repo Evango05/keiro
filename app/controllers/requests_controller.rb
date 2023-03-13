@@ -7,7 +7,8 @@ class RequestsController < ApplicationController
         lat: hotspot.latitude,
         lng: hotspot.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { hotspot: hotspot }),
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        categories: hotspot.categories
       }
     end
   end
