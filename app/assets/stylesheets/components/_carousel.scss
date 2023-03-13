@@ -1,6 +1,12 @@
 .menu--item figure:before {
   display: none !important;
+  content: none;
 }
+
+.menu--item:nth-child(n+10):before {
+  display: none !important;
+}
+
 
 .menu--item {
   height: 80px !important;
