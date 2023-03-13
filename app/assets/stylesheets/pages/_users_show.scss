@@ -1,0 +1,26 @@
+.container-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1A15FF;
+}
+
+#img-size {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+}
+
+#link-style {
+  text-decoration: none;
+  color: #FC5201;
+}
+
+#link-margin-top {
+  margin-top: -7px;
+}
+
+.card-itinerary {
+  height: 133px;
+  width: 357px;
+}
