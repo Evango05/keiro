@@ -32,7 +32,9 @@
 
 
 .grey_box {
-  background-color : #D9D9D9;
+  background-color : #ffffff;
+  border: #1A15FF 1px solid;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -119,6 +121,10 @@
   color: white;
 }
 
+.btn-trajet-container {
+  position: relative;
+}
+
 .btn-trajet {
   position: absolute;
   background-color: #1A15FF;
@@ -129,6 +135,7 @@
   margin-bottom: 6px;
   width: 84px;
   border-radius: 10px;
+
 
   a {
     text-decoration: none;
