@@ -28,7 +28,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/adrienlupo/clf79uzmp009701pgdvrmpuvv',
     })
     this.map.on('load', () => {
       this.map.addSource('route', {
@@ -49,8 +49,10 @@ export default class extends Controller {
           'line-cap': 'round'
         },
         'paint': {
-          'line-color': '#FF0000',
-          'line-width': 5
+
+          'line-color': '#1A15FF',
+          'line-width': 6
+
         }
       });
     });
@@ -58,10 +60,6 @@ export default class extends Controller {
     this.#fitMapToMarkers(this.itineraryRouteValue.routes[0].geometry.coordinates)
   }
 
-
-  #showItineraryOnMap() {
-
-  }
 
   #fitMapToMarkers(points) {
     const bounds = new mapboxgl.LngLatBounds()
