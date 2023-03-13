@@ -13,6 +13,9 @@ puts "Creating User Charlie (test@gmail.com - 123456)..."
 
 User.create!({
   nickname: "Charlie",
+  first_name: "Charlie",
+  last_name: "Toto",
+  address: "21 Rue Haxo, Marseille",
   email: "test@gmail.com",
   password: "123456"
 })

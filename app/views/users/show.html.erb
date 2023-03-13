@@ -1,11 +1,35 @@
-<h1>show de user</h1>
-<br>
+  <br>
+<div class='container'>
+  <div>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/adrienlupo", id: 'img-size' %>
+  </div>
+  <br>
 
-<h2>Current user </h2>
-<p>Nickname: <%=  @user.nickname %></p>
-<p>Name:</p>
-<p>Last Name:</p>
-<p>Email: <%= @user.email %></p>
+  <p class='roboto-medium-font'>
+    <%= @user.full_name %>
+  </p>
+
+  <p class='roboto-light-font'>
+    <%= @user.address %>
+  </p>
+
+  <p id='link-margin-top'>
+    <%= link_to 'Strava', 'https://www.strava.com', target: '_blank', id: 'link-style' %>
+  </p>
+
+  <button>
+    Edit Profile
+  </button>
+  <br>
+
+  <button class="btn-delete">
+    Delete Profile
+  </button>
+</div>
+
+<% @itineraries.each do |itinerary| %>
+  <div class='card-itinerary'><%= itinerary %></div>
+<% end %>
 
 <%#  ici insérer  liens
 'EDIT'  pour aller sur la page update de user_path
