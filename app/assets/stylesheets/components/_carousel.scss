@@ -12,6 +12,11 @@
   height: 80px !important;
   width: 80px !important;
   border-radius: 10px;
+  filter: grayscale(100%);
+}
+
+.item-grey {
+  filter: grayscale(0%) !important;
 }
 
 
