@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @request.user = current_user
 
     @request.category = params[:request][:category]
-    @request.category = @request.category.drop(1)
+    @request.category = @request.category.reject(&:empty?)
 
     @request.longitude = params[:request][:longitude]
     @request.latitude = params[:request][:latitude]
@@ -45,15 +45,15 @@ class RequestsController < ApplicationController
       end
     end
 
-    @selected_hotspots_ids = []
+    @selected_hotspot_ids = []
 
     array.each do |category|
-      @selected_hotspots_ids << category.hotspots.ids
+      @selected_hotspot_ids << category.hotspots.ids
     end
 
-    @selected_hotspots_ids = @selected_hotspots_ids.flatten.uniq!
+    @selected_hotspot_ids = @selected_hotspot_ids.flatten.uniq!
 
-    #DEBUG == ici @selected_hotspots_ids fonctionne parfaitement
+    #DEBUG == ici @selected_hotspot_ids fonctionne parfaitement
     # et est transformé par le form en  :selected_hotspots_id
 
     # # on définit nos coordonnées de départ

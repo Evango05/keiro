@@ -45,9 +45,9 @@
                   # as: :hidden,
                   value: @request.longitude%>
 
-      <%= f.input :selected_hotspots_id,
+      <%= f.input :selected_hotspot_ids,
                   as: :hidden,
-                  input_html: {value: @selected_hotspots_ids }%>
+                  input_html: {value: @selected_hotspot_ids }%>
 
       <%= f.button :submit,
                     class: "btn-primary"%>
