@@ -96,6 +96,7 @@
 
 .tag-item {
   display: inline-block;
+  white-space: nowrap !important;
 }
 
 .tag-selector {
@@ -106,7 +107,7 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
+  white-space: nowrap !important;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: #ECEAFF;
@@ -145,6 +146,5 @@
     top: 15px;
     left: 0px;
   }
-
 
 }
