@@ -39,8 +39,8 @@
 
 .button-relative{
   position: relative;
-  z-index: 2;
-  top: -44px;
+  z-index: 3;
+  top: 30rem;
   opacity: 0.8;
   margin-left: 1.1%;
 }
@@ -48,11 +48,12 @@
 .reveal-relative {
   position: relative;
   z-index: 2;
-  top: -733px;
+  top: -46rem;
   opacity: 0.85;
 }
 
 .request_category{
   display: flex;
   overflow-x: scroll;
+  font-size: 1.5em;
 }
