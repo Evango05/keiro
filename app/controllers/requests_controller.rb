@@ -71,6 +71,9 @@ class RequestsController < ApplicationController
     # # on définit nos coordonnées de départ
     # @startcoordinates = [@request.longitude, @request.latitude]
 
+
+    #call the isochrone API to filter the hotspots
+
   end
 
   private

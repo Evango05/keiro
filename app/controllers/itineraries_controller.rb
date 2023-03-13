@@ -4,6 +4,7 @@ require 'open-uri'
 class ItinerariesController < ApplicationController
   def index
     @itineraries = Itinerary.all
+
   end
 
   def new
@@ -36,29 +37,30 @@ class ItinerariesController < ApplicationController
     data = JSON.parse(routes_serialized)
     # return a list of routes
 
-    data["routes"][0]
-    data["uuid"]
+    # to fetch stuff from data
+    # data["routes"][0]
+    # data["uuid"]
 
     @itinerary.route = data
 
+    @itinerary.length = data["routes"][0]["distance"]
 
-    # # data.routes.first
-    # @itinerary.route = data.routes.first # JSON column
+    # Methode pour passer en km avec 2 chiffres après la virgule
+    @itinerary.length = @itinerary.length / 1000
+    @itinerary.length = @itinerary.length.round(2)
+
+  # Methode pour passer en minutes
+    @itinerary.duration = data["routes"][0]["duration"] / 60
 
     if @itinerary.save
       redirect_to itinerary_path(@itinerary)
     end
-    # code stops here: a first instance of itinerary is being saved
-    # now send it to mapbox
+
   end
 
   def show
     @itinerary = Itinerary.find(params[:id])
     @hotspot_instances = Hotspot.where(id: @itinerary.selected_hotspot_ids)
-
-    # @itinerary.selected_hotspot_ids.each do |hotspot|
-    #   @hotspot_instances << Hotspot.find(hotspot.to_i)
-    # end
 
     @markers = @hotspot_instances.map do |hotspot|
       {
@@ -67,21 +69,8 @@ class ItinerariesController < ApplicationController
       }
     end
 
-    # # j'instancie mon array de coordonnées
-    # @passingcoordinates = []
-    # # j'y ajoute ma coordonnée de départ
-    # @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
-    # #  je compile
-    # @hotspot_instances.each do |hotspot|
-    #   @passingcoordinates << [hotspot.longitude, hotspot.latitude]
-    # end
-    # # j'y ajoute ma coordonnée de fin
-    # @passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
-    # # j'interpole le tout au bon format pour la requete API
-    # @passingcoordinates = @passingcoordinates.map { |coord| coord.join(",") }.join(";")
-    @passingcoordinates = hotspots_string(@hotspot_instances)
+  @passingcoordinates = hotspots_string(@hotspot_instances)
   end
-
 
   private
 
@@ -97,6 +86,7 @@ class ItinerariesController < ApplicationController
     hotspots.reduce(start_point) do |string, hotspot|
       string + "#{hotspot.longitude},#{hotspot.latitude};"
     end + start_point[0...-1]
+
     # hotspots.each do |hotspot|
     #   passingcoordinates << [hotspot.longitude, hotspot.latitude]
     # end
@@ -105,4 +95,7 @@ class ItinerariesController < ApplicationController
     # # j'interpole le tout au bon format pour la requete API
     # passingcoordinates = passingcoordinates.map { |coord| coord.join(",") }.join(";")
   end
+
+
+
 end

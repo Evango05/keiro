@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_114610) do
   end
 
   create_table "itineraries", force: :cascade do |t|
-    t.integer "duration"
+    t.integer "duration"  # in minutes
     t.float "length"
     t.float "elevation"
     t.boolean "favorite"
