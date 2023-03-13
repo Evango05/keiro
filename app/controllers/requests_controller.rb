@@ -38,7 +38,6 @@ class RequestsController < ApplicationController
     @categories = Category.all
     array = []
 
-
     @selected_cat.each do |cat|
       @categories.each do |category|
         if cat == category.name
@@ -54,7 +53,7 @@ class RequestsController < ApplicationController
       @selected_hotspot_ids << category.hotspots.ids
     end
 
-    @selected_hotspot_ids = @selected_hotspot_ids.flatten.uniq!
+    @selected_hotspot_ids = @selected_hotspot_ids.flatten.uniq #uniq ??
 
 
     @selected_hotspot_ids.each do |id|
