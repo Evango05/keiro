@@ -79,7 +79,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:id, :distance, :category, :longitude, :latitude, :selected_hotspots_id)
+    params.require(:request).permit(:id, :distance, :longitude, :latitude, :selected_hotspots_id, category: [])
   end
 
 end
