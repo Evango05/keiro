@@ -1,12 +1,32 @@
 <% @itineraries.each do |itinerary|%>
 
-    <div class="container-index-itineraries">
+<%= link_to itinerary_path(itinerary), class: "text-deco" do %>
+  <div class='container-index-itineraries'>
 
-        <div class='container-index-itineraries-2'>
-          <div class='item-index-itineraries-2'>
+      <div class='container-index-itineraries-2'>
+
+        <div class='item-index-itineraries'>
+        </div>
+
+        <div>
+          <p style='color: white; font-weight: 500;'><%= itinerary.created_at.to_date.strftime("Tour du %d.%m.%Y") %></p>
+          <p style='color: white; font-weight: 300;'><%= itinerary.duration %> minutes</p>
+          <p style='color: white; font-weight: 300;'><%= itinerary.length %> kilomètres</p>
+        </div>
+
+        <div class='container-image'>
+          <% hotspost_ids = itinerary.selected_hotspot_ids.first(2) %>
+          <% hotspot_1 = Hotspot.find(hotspost_ids.first.to_i) %>
+          <% hotspot_2 = Hotspot.find(hotspost_ids.last.to_i) %>
+          <div class="image-top" style="background-image: url(<%= cl_image_path hotspot_1.photo.key %>);">
+          </div>
+          <div class="image-bottom" style="background-image: url(<%= cl_image_path hotspot_2.photo.key %>);">
           </div>
         </div>
 
-    </div>
+      </div>
+
+  </div>
+  <% end %>
 
 <% end %>
