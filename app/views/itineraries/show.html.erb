@@ -25,9 +25,9 @@
         <% end %>
     </div>
   </div>
-  
+
   <%# ------ je finis ici -------- %>
-  <div class= "map"
+  <div class= "mapitinerary"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
     data-passingcoordinates-markers-value="<%= @markers.to_json %>"
