@@ -5,29 +5,33 @@
 
     </div>
 
-    <%# <% @hotspot_instances.each do |hotspot| %>
-      <%# <%= hotspot.name %>
-    <%# <% end %>
-
-  <%# ---------------------- LA JE FAIS DES TESTS DE DISPLAY ------------------------ %>
-
   <div class= "map"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  >
+    data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div>
 
+  <div class="flexgo">
+    <a class="big_blue_button" href="#">GO</a>
+  </div>
+
+
+
+  <%# TEST DISPLAY
     <h1>Et voici mes super infos que je vais envoyer à mapbox</h1>
-    <p>la distance de mon itinéraire:  <%= @itinerary.length %> km</p>
-    <p>la temps pour parcourir mon itinéraire:  <%= @itinerary.duration %> min</p>
+    <p>la distance de mon itinéraire:  <%= @itinerary.length km</p>
+    <p>la temps pour parcourir mon itinéraire:  <%= @itinerary.duration %>
+    <%# min</p> %>
 
 
-    <p>les coordonnéees des points de mon itinéraire:</p>
+    <%# <p>les coordonnéees des points de mon itinéraire:</p>
      <%= @passingcoordinates %>
-    <p data-passingcoordinates-target="coordinates" class="input-coordinates"> <%= @passingcoordinates %>
-    </p>
+    <%# <p data-passingcoordinates-target="coordinates" class="input-coordinates"> <%= @passingcoordinates %>
+    <%# </p>
   </div>
-</div>
+
+</div> %>
+
+<%# <% console %>
+
