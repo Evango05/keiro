@@ -16,7 +16,8 @@ User.create!({
   email: "test@gmail.com",
   password: "123456",
   first_name: "Charlie",
-  last_name: "Toto"
+  last_name: "Toto",
+  address: "21 rue Haxo, Marseille"
 })
 
 puts "Creating Hotspots..."
