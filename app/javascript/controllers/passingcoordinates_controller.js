@@ -7,10 +7,12 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
+    markers: Array,
     itineraryRoute: Object
   }
 
   connect() {
+    console.log("coucou");
     // console.log(this.itineraryRouteValue.routes[0].geometry);
 
 
@@ -30,6 +32,9 @@ export default class extends Controller {
       container: this.element,
       style: 'mapbox://styles/adrienlupo/clf79uzmp009701pgdvrmpuvv',
     })
+
+    this.#addMarkersToMap()
+
     this.map.on('load', () => {
       this.map.addSource('route', {
         'type': 'geojson',
@@ -67,4 +72,16 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0})
   }
 
+  #addMarkersToMap() {
+    console.log(this.markersValue);
+    this.markersValue.forEach((marker) => {
+
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.marker_html
+
+      new mapboxgl.Marker(customMarker)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
 }

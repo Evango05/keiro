@@ -60,15 +60,15 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     @hotspot_instances = Hotspot.where(id: @itinerary.selected_hotspot_ids)
-
-    @markers = @hotspot_instances.map do |hotspot|
+    @markers = @hotspot_instances.geocoded.map do |hotspot|
       {
         lat: hotspot.latitude,
-        lng: hotspot.longitude
+        lng: hotspot.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
 
-  @passingcoordinates = hotspots_string(@hotspot_instances)
+    @passingcoordinates = hotspots_string(@hotspot_instances)
   end
 
   private
@@ -94,7 +94,4 @@ class ItinerariesController < ApplicationController
     # # j'interpole le tout au bon format pour la requete API
     # passingcoordinates = passingcoordinates.map { |coord| coord.join(",") }.join(";")
   end
-
-
-
 end

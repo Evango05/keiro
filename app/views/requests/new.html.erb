@@ -4,7 +4,7 @@
     <div class="menu--wrapper" data-action="long-press->reveal#toggle">
       <% index = 0 %>
       <% @hotspots.each do |hotspot| %>
-        <div class="menu--item"  data-action="long-press->reveal#show" data-long-press-delay="400" data-reveal-target="photo"data-reveal-index-param="<%= index %>" data-value= "<%= hotspot.name %>" data-value-2= "<%= hotspot.description %>" >
+        <div class="menu--item"  data-action="long-press->reveal#show" data-long-press-delay="400" data-reveal-target="photo"data-reveal-index-param="<%= index %>" data-value= "<%= hotspot.name %>" data-value-2= "<%= hotspot.description %>" data-value-3= "<%= hotspot.categories %>" >
           <figure><%= cl_image_tag(hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale") %></figure>
         </div>
         <% index += 1 %>

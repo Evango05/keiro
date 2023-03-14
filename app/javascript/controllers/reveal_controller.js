@@ -10,7 +10,11 @@ export default class extends Reveal {
 
   show(event) {
     const div = this.photoTargets[event.params["index"]]
-    this.itemTarget.innerHTML = `${div.getAttribute("data-value")} <br> <br> ${div.getAttribute("data-value-2")}`
+
+    this.itemTarget.innerHTML =
+    `<span style='font-size:1.3em'> ${div.getAttribute("data-value")}</span>`+
+    `<br>`+
+    `<span style='font-weight:300'> ${div.getAttribute("data-value-2")}</span>`
     console.log(div.classList.toggle("item-grey"))
   }
 }
