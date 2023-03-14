@@ -135,14 +135,17 @@
 }
 
 .btn-trajet {
-  position: absolute;
+  position: relative;
   background-color: #1A15FF;
   top: 0px;
   left: 0px;
   height: 75px;
   margin-top: 6px;
   margin-bottom: 6px;
-  width: 84px;
+  min-width: 84px !important;
+  width: 84px !important;
+  min-height: 84px !important;
+  height: 84px !important;
   border-radius: 10px;
 
 
@@ -155,6 +158,11 @@
     left: 0px;
   }
 
+}
+
+.btn-selected {
+  border-width: medium !important;
+  border-color: #1A15FF !important;
 }
 
 .btn-delete {
@@ -171,4 +179,12 @@
   justify-content: center;
   width: 100%;
 
+}
+
+.scrollable-list::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable-list fieldset::-webkit-scrollbar {
+  display: none;
 }
