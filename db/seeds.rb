@@ -14,7 +14,9 @@ puts "Creating User Charlie (test@gmail.com - 123456)..."
 User.create!({
   nickname: "Charlie",
   email: "test@gmail.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Charlie",
+  last_name: "Toto"
 })
 
 puts "Creating Hotspots..."
