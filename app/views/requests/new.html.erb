@@ -1,58 +1,77 @@
 <div class="container" data-controller="reveal" data-reveal-hidden-class="d-none">
 
-  <div class="menu", data-controller="carousel">
-    <div class="menu--wrapper" data-action="long-press->reveal#toggle">
-      <% index = 0 %>
-      <% @hotspots.each do |hotspot| %>
-        <div class="menu--item"  data-action="long-press->reveal#show" data-long-press-delay="400" data-reveal-target="photo"data-reveal-index-param="<%= index %>" data-value= "<%= hotspot.name %>" data-value-2= "<%= hotspot.description %>" data-value-3= "<%= hotspot.categories %>" >
-          <figure><%= cl_image_tag(hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale") %></figure>
-        </div>
-        <% index += 1 %>
-      <% end %>
+  <div class="menu--wrapper" >
+    <div class="hotspot-navbar d-flex">
+      <div class="btn-trajet d-flex me-2" >
+        <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
+      </div>
+
+      <div class="d-flex scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
+        <% index = 0 %>
+
+        <% @hotspots.each do |hotspot| %>
+
+          <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2 position-relative overflow-hidden", style: "border-width: 0px") do %>
+
+            <div
+              class="w-100 h-100 "
+              data-action="long-press->reveal#show"
+              data-long-press-delay="400"
+              style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+              data-reveal-target="photo"
+              data-reveal-index-param="<%= index %>"
+              data-value= "<%= hotspot.name %>"
+              data-value-2= "<%= hotspot.description %>"
+              data-value-3= "<%= hotspot.categories %>"
+            >
+
+              &nbsp;
+            </div>
+
+          <% end %>
+          <% index += 1 %>
+
+        <% end %>
+
+      </div>
     </div>
+
   </div>
 
   <div class="row simple-form btn-trajet-container" data-controller="geolocate">
-    <div class="btn-trajet"><a href="<%= itineraries_path %>" class="">Anciens Trajets</a></div>
-        <%= simple_form_for @request do |f| %>
-        <%= f.input :longitude,
-                as: :hidden,
-                input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"} %>
-        <%= f.input  :latitude,
-                as: :hidden,
-                input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
-    </div>
-  <div >
-
-  <div
-    class = "map"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-
-    <div class="button-relative scrollable-list">
+    <%= simple_form_for @request do |f| %>
+      <div
+        class="map"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div class="button-relative scrollable-list">
           <%= f.input :category,
-                    as: :check_boxes,
-                    label: '',
-                    input_html: {class: "tag-selector"},
-                    item_wrapper_class: 'tag-item',
-                    multiple: true,
-                    as: :check_boxes,
-                    collection: Request::CATEGORIES %>
-    </div>
-   </div>
+            as: :check_boxes,
+            label: '',
+            input_html: {class: "tag-selector"},
+            item_wrapper_class: 'tag-item',
+            multiple: true,
+            as: :check_boxes,
+            collection: Request::CATEGORIES %>
+        </div>
+      </div>
 
-  <div class="distance_box" data-controller="distance">
-          <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
-          <%= f.input :distance,
-                      label: false,
-                      as: :range,
-                      input_html: {value: 0, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
-  </div>
+      <div class="distance_box" data-controller="distance">
+              <p class = "labelslider" data-distance-target="distanceinject">1 km</p>
+              <%= f.input :distance,
+                          label: false,
+                          as: :range,
+                          input_html: {value: 0, max: 50, class: "slider", data: { action: "input->distance#update", distance_target: "distanceinput" }} %>
+      </div>
+      <%= f.input :longitude,
+              as: :hidden,
+              input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"} %>
+      <%= f.input  :latitude,
+              as: :hidden,
+              input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
 
-  <div>
-    <%= f.button :submit, "LOAD", class: "big_blue_button"%>
+      <%=  f.button :submit, "LOAD", class: "big_blue_button"%>
     <% end %>
   </div>
 
