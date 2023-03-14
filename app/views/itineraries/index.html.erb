@@ -1,53 +1,12 @@
-<div class="container">
+<% @itineraries.each do |itinerary|%>
 
-  <% @itineraries.each do |itinerary|%>
+    <div class="container-index-itineraries">
 
-    <div class="card mb-3" style="max-width: 590px;">
-      <div class="row g-0">
-
-        <div class="col-sm-4">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/GLPK_solution_of_a_travelling_salesman_problem.svg" class="map-preview" alt="...", height: 70, width: 70 >
-        </div>
-
-        <div class="col-sm-6">
-          <div class="card-body">
-            <h5 class="index-title"><%= itinerary.name %><%= itinerary.id %> du <%= itinerary.created_at.to_date %>
-              </h5>
-            <p class="card-text"><small class="text-muted">Temps: <%= itinerary.duration %> </small></p>
-            <p class="card-text"><small class="text-muted">Déniv: <%= itinerary.elevation %></small></p>
-            <p class="card-text"><small class="text-muted">Dist: <%= itinerary.length %></small></p>
+        <div class='container-index-itineraries-2'>
+          <div class='item-index-itineraries-2'>
           </div>
         </div>
 
-        <div class="col-sm-2">
-
-        <%# <% hotspot_ids = [] %>
-        <%# <% @itineraries %>
-        <%# <% hotspot_ids << itinerary.selected_hotspot_ids %> %>
-        <%# <% end %> %>
-        <%# <% raise %> %>
-        <%# <% hotspot_ids = hotspot_ids.take(3) %> %> %>
-        <% selected_hotspot_ids_clean = []%>
-          <% selected_hotspots_ids = itinerary.selected_hotspot_ids.take(3) %>
-           <%# <% selected_hotspots_ids.each do |h| %>
-            <%# <% selected_hotspot_ids_clean << h.to_i %>
-          <%# <% end %>
-
-<%# attention, renvoie un bug si selected_hotspot_ids ne comporte pas plus d'un élément %>
-
-<%# !!!! le dernier itinerary en date a été créer avec des string à la place de integer dans les hotspot ids %>
-          <% selected_hotspot_ids.each do |hotspot| %>
-          <%# erreur avec le point to_i %>
-              <% hotspot_instance = Hotspot.find(hotspot.to_i) %>
-            <figure><%= cl_image_tag hotspot_instance.photo.key, height: 50, width: 50, crop: :fill, radius: 5  %>
-            </figure>
-            <% end %>
-
-
-        </div>
-      </div>
     </div>
-  <% end %>
 
-
-</div>
+<% end %>

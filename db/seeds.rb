@@ -8,7 +8,6 @@ User.destroy_all
 Category.destroy_all
 Hotspot.destroy_all
 
-
 puts "Creating User Charlie (test@gmail.com - 123456)..."
 
 User.create!({
