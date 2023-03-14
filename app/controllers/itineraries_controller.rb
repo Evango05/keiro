@@ -95,7 +95,4 @@ class ItinerariesController < ApplicationController
     # # j'interpole le tout au bon format pour la requete API
     # passingcoordinates = passingcoordinates.map { |coord| coord.join(",") }.join(";")
   end
-
-
-
 end
