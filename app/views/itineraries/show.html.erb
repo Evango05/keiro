@@ -1,9 +1,68 @@
 <div class="container" >
 
-    <div class="carto"  >
-      <h1>Here my map from mapbox</h1>
+  <div class="hotspot-navbar d-flex">
+
+    <div class="btn-trajet d-flex me-2">
+      <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
+    </div>
+
+
+    <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
+        <%# ici je recupère une collection de selected hostpots %>
+        <% selected_hotspot_ids = [] %>
+        <% @hotspot_instances.each do |hotspot| %>
+          <% selected_hotspot_ids << hotspot.id %>
+
+          <%= button_tag(type: 'submit', class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
+            <div
+              class="w-100 h-100 "
+              style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+            >
+              &nbsp;
+            </div>
+          <% end %>
+
+        <% end %>
+
+
+        <%# <%= cl_image_tag(hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale") %>
+
+
+        <%# <div class="btn-group" role="group" aria-label="First group">
+          <div class="img-rounded"><%= cl_image_tag hotspot.photo.key, :height=>300, :width=>300, :crop=>"scale"%></div>
+        <%# </div>
+        <% end %>
+
+
+<%#
+
+        <%= simple_form_for @itinerary do |f| %>
+
+
+
+          <%# <%= f.input :selected_hotspot_ids,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            html: {"style = "}
+            input_html: {class: 'category-selector'},
+            input_html: {style: 'category-selector'},
+
+            collection: selected_hotspot_ids%>
+
+        <%# <% end %>
+
 
     </div>
+
+  </div>
+
+
+  <div class="carto"  >
+    <h1>Here my map from mapbox</h1>
+
+  </div>
 
   <div class= "map"
     data-controller="passingcoordinates"
@@ -34,4 +93,3 @@
 </div> %>
 
 <%# <% console %>
-
