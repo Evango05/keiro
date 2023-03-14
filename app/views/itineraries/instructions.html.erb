@@ -1,5 +1,5 @@
 <div class="container" >
-<%# ------ je commence ici -------- %>
+  <h1>itineraries/instructions.html.erb</h1>
 
   <div class="hotspot-navbar d-flex">
 
@@ -25,8 +25,12 @@
         <% end %>
     </div>
   </div>
-  
-  <%# ------ je finis ici -------- %>
+
+
+  <div class="carto"  >
+    <h1>Here my map from mapbox</h1>
+  </div>
+
   <div class= "map"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
@@ -34,7 +38,29 @@
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
+
+    <%# ----------c'est ici que ça se passe --------- %>
+  <div id="instructions">
+  <script>
+
+
+      const instructions = document.getElementById('instructions');
+    const steps = data.legs[0].steps;
+
+    let tripInstructions = '';
+    for (const step of steps) {
+      tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+    }
+    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+      data.duration / 60
+    )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
+
+    </script>
+    </div>
+
+
   <div class="flexgo">
     <a class="big_blue_button" href="#">GO</a>
   </div>
+
 </div>
