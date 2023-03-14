@@ -36,12 +36,6 @@
       </div>
     </div>
 
-
-    <div class="distancebox" data-controller="distance">
-         <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
-         <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
-    </div>
-
   </div>
 
   <div class="row simple-form btn-trajet-container" data-controller="geolocate">
@@ -51,6 +45,7 @@
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
         <div class="button-relative scrollable-list">
           <%= f.input :category,
             as: :check_boxes,
@@ -60,6 +55,11 @@
             multiple: true,
             as: :check_boxes,
             collection: Request::CATEGORIES %>
+        </div>
+
+        <div class="distancebox" data-controller="distance">
+         <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
+         <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
         </div>
       </div>
 
