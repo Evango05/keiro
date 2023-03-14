@@ -61,47 +61,6 @@
   margin-bottom: 5px;
 }
 
-
-
-
-.distance_box {
-  position: relative;
-  z-index:  2;
-  margin-top: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #D9D9D9;
-  border-radius: 10px;
-}
-
-
-.slider {
-  width: 90%;
-  color: #D9D9D9;
-  background: #ffffff;
-  align-content: center;
-  opacity: 0.7;
-  transition: opacity .2s;
-  border-radius: 30px;
-  text-align: center;
-  margin-left: 15px;
-}
-
-.labelslider {
-  width: 90%;
-  color: #D9D9D9;
-  background: #ffffff;
-  align-content: center;
-  opacity: 0.7;
-  transition: opacity .2s;
-  border-radius: 30px;
-  text-align: center;
-  margin-left: 15px;
-  margin-top: 24px;
-}
-
-
 .tag-item {
   display: inline-block;
   white-space: nowrap !important;
@@ -147,7 +106,6 @@
   min-height: 84px !important;
   height: 84px !important;
   border-radius: 10px;
-
 
   a {
     text-decoration: none;

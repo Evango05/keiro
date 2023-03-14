@@ -1,10 +1,7 @@
 .container-index-itineraries {
-}
-
-.container-index-itineraries-2 {
   margin-top: 10px;
   margin-left: 16px;
-  padding: 10px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   height: 132px;
@@ -13,10 +10,49 @@
   border-radius: 10px;
 }
 
-.item-index-itineraries-2 {
+.container-index-itineraries-2 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.item-index-itineraries {
   width: 30%;
-  height: 50vh;
+  height: 14vh;
   background-color: gray;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/11/GLPK_solution_of_a_travelling_salesman_problem.svg");
   border-radius: 10px;
+}
+
+.image-top, .image-bottom {
+  height: calc(50% - 3px);
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  // img {
+
+  //   // max-width: 100%;
+  //   height: 100%;
+  //   object-fit: cover;
+  // }
+}
+
+.image-top {
+  border-radius: 10px;
+  margin: 0 0 6px 0;
+}
+
+.image-bottom {
+  border-radius: 10px;
+  margin: 3px 0 0 0;
+  // align-self: flex-end;
+}
+
+.container-image {
+  width: 15%;
+}
+
+.text-deco {
+  text-decoration: none;
 }
