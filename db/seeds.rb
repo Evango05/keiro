@@ -106,24 +106,30 @@ bunker.save!
 
 puts "Creating Categories..."
 
+# Category::NAMES.each do |name|
+#   Category.create!({
+#     name: name
+#   })
+# end
+
 archi = Category.create!({
-  name: "Architecture"
+  name: Category::NAMES[0]
 })
 
 street = Category.create!({
-  name: "Street Art"
+  name: Category::NAMES[1]
 })
 
 pdv = Category.create({
-  name: "Point de vue"
+  name: Category::NAMES[2]
 })
 
 urbex = Category.create!({
-  name: "Urbex"
+  name: Category::NAMES[3]
 })
 
 parc = Category.create!({
-  name: "Parc"
+  name: Category::NAMES[4]
 })
 
 puts "Linking Hotspots to Categories with Hotcat table"
