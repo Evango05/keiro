@@ -1,1 +1,20 @@
-  <h1>recap</h1>
+
+<div class="container" >
+
+  <div class="bravobox">
+        <p class = "m-0" id = textbox>Récapitulatif de votre course</p>
+  </div>
+
+  <div class= "maprecap"
+    data-controller="passingcoordinates"
+    data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
+    data-passingcoordinates-markers-value="<%= @markers.to_json %>"
+    data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <div class = "mt-3 boxrecapbuttons">
+    <i class="fa-solid fa-star favorite_button"></i>
+    <a class="share_button" href="#">SHARE</a>
+  </div>
+
+</div>

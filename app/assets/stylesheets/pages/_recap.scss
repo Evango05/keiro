@@ -1,0 +1,18 @@
+.bravobox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: #1a15ff solid 2px;
+  top: 2em;
+  background-color : #ffffff;
+  opacity: 0.8;
+  width: 90%;
+  color: #1A15FF;
+  border-radius: 30px;
+  margin-left: 5%;
+}
+
+#textbox {
+  font-size: 1.3rem;
+}

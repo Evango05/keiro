@@ -10,6 +10,39 @@
   text-decoration: none;
 }
 
+.boxrecapbuttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.favorite_button {
+  width : 25%;
+  height: 2em;
+  line-height: 2em;
+  margin-top: 0rem;
+  background-color: #1A15FF;
+  color: rgb(255, 255, 255);
+  font-size: 1.3em;
+  border-radius: 0.5em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.share_button {
+  width: 65%;
+  height: 2em;
+  line-height: 2em;
+  margin-top: 0rem;
+  background-color: #1A15FF;
+  color: rgb(255, 255, 255);
+  font-size: 1.3em;
+  border-radius: 0.5em;
+  text-align: center;
+  text-decoration: none;
+}
+
 @keyframes fade-in-top {
   from {
     opacity: 0;
