@@ -1,3 +1,4 @@
+<% index = 0 %>
 <% @itineraries.each do |itinerary|%>
   <%= link_to itinerary_path(itinerary), class: "text-deco" do %>
     <% if !itinerary.selected_hotspot_ids.empty? %>
@@ -5,7 +6,9 @@
         <div class='container-index-itineraries-2'>
 
           <div class='item-index-itineraries'>
-          <%= image_tag @maps.sample, class: "map-image" %>
+
+          <%= image_tag @maps[index], class: "map-image" %>
+          <% index += 1 %>
           </div>
 
           <div>
