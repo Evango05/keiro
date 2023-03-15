@@ -10,11 +10,12 @@ class Hotspot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  def self.as_string(hotspots = nil)
-    hotspots ||= all
-    hotspots.map do |hotspot|
-      "#{hotspot.longitude},#{hotspot.latitude}"
-    end.join(";")
+  def self.as_string(itinerary = nil)
+    hotspots = itinerary.hotspots
+    start_point = "#{itinerary.request.longitude},#{itinerary.request.latitude};"
+    hotspots.reduce(start_point) do |string, hotspot|
+      string + "#{hotspot.longitude},#{hotspot.latitude};"
+    end + start_point[0...-1]
   end
 
   def self.from_categories(categories_names = nil)
