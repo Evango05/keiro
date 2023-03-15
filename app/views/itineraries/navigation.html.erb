@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="hotspot-navbar d-flex justify-content-between">
+
+    <% hotspot = @hotspot_instances[0] %>
+    <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2   overflow-hidden opacity-0") do %>
+
+      <div
+        class="w-100 h-100"
+        style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+      >
+        &nbsp;
+      </div>
+
+    <% end %>
+
+
+    <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2   overflow-hidden", style: "background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678888356/Plan_de_travail_4_copie_2_imqhro.png'); background-size: cover;") do %>
+
+      <div
+        class="w-100 h-100"
+        >
+        &nbsp;
+      </div>
+    <% end %>
+
+
+    <% hotspot = @hotspot_instances[0] %>
+    <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2 overflow-hidden") do %>
+      <div
+        class="w-100 h-100"
+        style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+      >
+        &nbsp;
+      </div>
+    <% end %>
+  </div>
+
+  <div
+    class="mapitinerary"
+    style="width: 366px; position: relative; background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678896470/navigation_new_mhgrrz.png'); background-size: cover;"
+  >
+  </div>
+
+  <div class="d-flex">
+    <a class="big_blue_button" href="#">STOP</a>
+  </div>
+
+</div>

@@ -86,6 +86,11 @@ class ItinerariesController < ApplicationController
     @passingcoordinates = hotspots_string(@hotspot_instances)
   end
 
+  def navigation
+    @itinerary = Itinerary.find(params[:itinerary_id])
+    @hotspot_instances = Hotspot.where(id: @itinerary.selected_hotspot_ids)
+  end
+
   private
 
   def itinerary_params

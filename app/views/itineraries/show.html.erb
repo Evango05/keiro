@@ -34,7 +34,8 @@
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  <div class="flexgo">
-    <a class="big_blue_button" href="#">GO</a>
+  <div class="flex-go justify-content-between">
+    <a class="big_blue_button" href="#">SEND GPX</a>
+    <a class="big_blue_button" href="<%=itinerary_navigation_path(@itinerary)%>">NAVIGATE</a>
   </div>
 </div>
