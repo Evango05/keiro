@@ -12,7 +12,7 @@ class ItinerariesController < ApplicationController
   end
 
   def create
-    @itinerary = Itinerary.new(itinerary_params)
+    @itinerary = Itinerary.new({selected_hotspot_ids: @selected_hotspot_ids })
 
     @itinerary.request = Request.find(params[:itinerary][:request_id])
 
@@ -68,7 +68,7 @@ class ItinerariesController < ApplicationController
       }
     end
 
-    @passingcoordinates = hotspots_string(@hotspot_instances)
+    @passingcoordinates = Hotspot.as_string(@hotspot_instances)
   end
 
   def recap
@@ -89,23 +89,5 @@ class ItinerariesController < ApplicationController
 
   def itinerary_params
     params.require(:itinerary).permit(:duration, :length, :elevation, :request_id, :selected_hotspot_ids)
-  end
-
-  def hotspots_string(hotspots)
-    # j'instancie mon array de coordonnées
-    # passingcoordinates = [[@itinerary.request.longitude, @itinerary.request.latitude]]
-    start_point = "#{@itinerary.request.longitude},#{@itinerary.request.latitude};"    #  je compile
-
-    hotspots.reduce(start_point) do |string, hotspot|
-      string + "#{hotspot.longitude},#{hotspot.latitude};"
-    end + start_point[0...-1]
-
-    # hotspots.each do |hotspot|
-    #   passingcoordinates << [hotspot.longitude, hotspot.latitude]
-    # end
-    # # j'y ajoute ma coordonnée de fin
-    # passingcoordinates << [@itinerary.request.longitude, @itinerary.request.latitude]
-    # # j'interpole le tout au bon format pour la requete API
-    # passingcoordinates = passingcoordinates.map { |coord| coord.join(",") }.join(";")
   end
 end
