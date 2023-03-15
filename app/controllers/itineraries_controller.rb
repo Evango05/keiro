@@ -4,6 +4,7 @@ require 'open-uri'
 class ItinerariesController < ApplicationController
   def index
     @itineraries = Itinerary.all
+    @maps = ["itineraries/map1.png", "itineraries/map2.png", "itineraries/map3.png", "itineraries/map4.png", "itineraries/map5.png", "itineraries/map6.png", "itineraries/map8.png"]
   end
 
   def new
