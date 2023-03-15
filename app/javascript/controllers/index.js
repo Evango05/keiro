@@ -22,6 +22,9 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import NavigationController from "./navigation_controller"
+application.register("navigation", NavigationController)
+
 import PassingcoordinatesController from "./passingcoordinates_controller"
 application.register("passingcoordinates", PassingcoordinatesController)
 
