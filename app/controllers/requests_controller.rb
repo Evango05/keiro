@@ -30,18 +30,19 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    @itinerary = Itinerary.new
     selected_cats = @request.category
     @categories = Category.all
     hotspots = Hotspot.from_categories(selected_cats)
+    @itinerary = Itinerary.create(
+      selected_hotspot_ids: hotspots.map(&:id),
+      request: @request
+    )
 
-    url = direction_url(hotspots)
+    url = direction_url(@itinerary)
     routes_serialized = URI.open(url).read
     data = JSON.parse(routes_serialized)
 
-    @itinerary = Itinerary.create(
-      selected_hotspot_ids: hotspots.map(&:id),
-      request: @request,
+    @itinerary.update(
       route: data,
       length: (data["routes"][0]["distance"] / 1000).round(2),
       duration: data["routes"][0]["duration"] / 60
@@ -56,8 +57,8 @@ class RequestsController < ApplicationController
 
   private
 
-  def direction_url(hotspots)
-    safe_hotspots_string = CGI.escape Hotspot.as_string(hotspots)
+  def direction_url(itinerary)
+    safe_hotspots_string = CGI.escape Hotspot.as_string(itinerary)
     "https://api.mapbox.com/directions/v5/mapbox/walking/#{safe_hotspots_string}?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
   end
 

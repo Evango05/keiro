@@ -69,7 +69,7 @@ class ItinerariesController < ApplicationController
       }
     end
 
-    @passingcoordinates = Hotspot.as_string(@hotspot_instances)
+    @passingcoordinates = Hotspot.as_string(@itinerary)
   end
 
   def recap
