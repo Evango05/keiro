@@ -3,7 +3,9 @@
   <div class="menu--wrapper" >
     <div class="hotspot-navbar d-flex">
       <div class="btn-trajet d-flex me-2" >
-        <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
+        <%= link_to itineraries_path do %>
+           <p>Anciens Trajets</p>
+        <% end %>
       </div>
 
       <div class="d-flex scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
