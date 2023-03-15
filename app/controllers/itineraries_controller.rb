@@ -83,7 +83,7 @@ class ItinerariesController < ApplicationController
       }
     end
 
-    @passingcoordinates = hotspots_string(@hotspot_instances)
+    # @passingcoordinates = hotspots_string(@hotspot_instances)
   end
 
   def navigation
