@@ -2,32 +2,7 @@
 <div class="container" >
 
   <div class="bravobox">
-    <h3>Bravo ! Voici le récapitulatif de votre trajet</h3>
-  </div>
-
-  <div class="hotspot-navbar d-flex">
-
-    <div class="btn-trajet d-flex me-2">
-      <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
-    </div>
-
-
-    <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
-
-        <% selected_hotspot_ids = [] %>
-        <% @hotspot_instances.each do |hotspot| %>
-          <% selected_hotspot_ids << hotspot.id %>
-
-          <%= button_tag(type: 'submit', class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
-            <div
-              class="w-100 h-100 "
-              style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
-            >
-              &nbsp;
-            </div>
-          <% end %>
-        <% end %>
-    </div>
+        <p class = "m-0" id = textbox>Récapitulatif de votre course</p>
   </div>
 
   <div class= "maprecap"
@@ -37,7 +12,9 @@
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  <div class="flexgo">
-    <a class="big_blue_button" href="#">GO</a>
+  <div class = "mt-3 boxrecapbuttons">
+    <i class="fa-solid fa-star favorite_button"></i>
+    <a class="share_button" href="#">SHARE</a>
   </div>
+
 </div>
