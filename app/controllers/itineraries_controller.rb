@@ -72,7 +72,7 @@ class ItinerariesController < ApplicationController
   end
 
   def recap
-    @itinerary = Itinerary.find(params[:id])
+    @itinerary = Itinerary.find(params[:itinerary_id])
     @hotspot_instances = Hotspot.where(id: @itinerary.selected_hotspot_ids)
     @markers = @hotspot_instances.geocoded.map do |hotspot|
       {
@@ -80,7 +80,6 @@ class ItinerariesController < ApplicationController
         lng: hotspot.longitude,
         marker_html: render_to_string(partial: "marker")
       }
-      raise
     end
 
     @passingcoordinates = hotspots_string(@hotspot_instances)
