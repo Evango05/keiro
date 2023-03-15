@@ -3,10 +3,9 @@
 
   <div class="hotspot-navbar d-flex">
 
-    <div class="btn-trajet d-flex me-2">
-      <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
-    </div>
-
+    <% link_to itineraries_path, class:"btn-trajet d-flex me-2" do %>
+      <p>Ancines Trajets</p>
+    <% end %>
 
     <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
         <%# ici je recupère une collection de selected hostpots %>
