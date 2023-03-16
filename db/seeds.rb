@@ -106,11 +106,6 @@ bunker.save!
 
 puts "Creating Categories..."
 
-# Category::NAMES.each do |name|
-#   Category.create!({
-#     name: name
-#   })
-# end
 
 archi = Category.create!({
   name: Category::NAMES[0]

@@ -7,7 +7,7 @@
 
       <div
         class="w-100 h-100"
-        style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+        style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
       >
         &nbsp;
       </div>
@@ -29,7 +29,7 @@
     <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2 overflow-hidden") do %>
       <div
         class="w-100 h-100"
-        style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+        style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
       >
         &nbsp;
       </div>
@@ -48,5 +48,5 @@
     <a class="big_blue_button d-none" style="width: 170px"  href="<%= itinerary_recap_path(@itinerary) %>" data-navigation-target="button3">END</a>
     <a class="big_blue_button p-3 d-none" style="position: absolute; top:50%; z-index: 9; width:366px;" data-navigation-target="button4">NAVIGATION PAUSED</a>
   </div>
-  
+
 </div>

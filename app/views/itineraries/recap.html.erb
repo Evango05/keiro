@@ -10,7 +10,7 @@
           <%= button_tag(class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
             <div
               class="w-100 h-100"
-              style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+              style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
             >
               &nbsp;
             </div>
