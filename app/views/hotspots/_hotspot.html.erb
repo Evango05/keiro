@@ -11,7 +11,7 @@
 
   <p>
     <strong>Hotspot picture:</strong>
-    <%= cl_image_tag hotspot.photo.key %>
+    <%= cl_image_tag(hotspot.photo.key, {secure: true}) %>
   </p>
 
 

@@ -31,6 +31,9 @@ application.register("navigation", NavigationController)
 import PassingcoordinatesController from "./passingcoordinates_controller"
 application.register("passingcoordinates", PassingcoordinatesController)
 
+import RecapController from "./recap_controller"
+application.register("recap", RecapController)
+
 import RevealController from "./reveal_controller"
 application.register("reveal", RevealController)
 

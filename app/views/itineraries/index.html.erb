@@ -20,9 +20,10 @@
               <% hotspost_ids = itinerary.selected_hotspot_ids.first(2) %>
               <% hotspot_1 = Hotspot.find(hotspost_ids.first.to_i) %>
               <% hotspot_2 = Hotspot.find(hotspost_ids.last.to_i) %>
-              <div class="image-top" style="background-image: url(<%= cl_image_path hotspot_1.photo.key %>);">
+              <div class="image-top" style="background-image: url(<%=
+               cl_image_path(hotspot_1.photo.key, {secure: true})  %>);">
               </div>
-              <div class="image-bottom" style="background-image: url(<%= cl_image_path hotspot_2.photo.key %>);">
+              <div class="image-bottom" style="background-image: url(<%= cl_image_path(hotspot_2.photo.key, {secure: true})   %>);">
               </div>
             </div>
         </div>

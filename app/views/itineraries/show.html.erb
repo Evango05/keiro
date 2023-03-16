@@ -20,6 +20,9 @@
 
             <div
               class="w-100 h-100 "
+
+              style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
+
               data-action="long-press->reveal#show"
               data-long-press-delay="400"
               style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
@@ -28,6 +31,7 @@
               data-value= "<%= hotspot.name %>"
               data-value-2= "<%= hotspot.description %>"
               data-value-3= "<%= hotspot.categories %>"
+
             >
               &nbsp;
             </div>
