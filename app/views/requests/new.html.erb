@@ -1,87 +1,95 @@
-<div class="container" data-controller="reveal grey-button" data-reveal-hidden-class="d-none">
-
-  <div class="menu--wrapper" >
-    <div class="hotspot-navbar d-flex">
-      <div class="btn-trajet d-flex me-2" >
-        <%= link_to itineraries_path do %>
-           <p>Anciens Trajets</p>
-        <% end %>
-      </div>
-
-      <div class="d-flex scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
-        <% index = 0 %>
-
-        <% @hotspots.each do |hotspot| %>
-
-
-
-          <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2 position-relative overflow-hidden", style: "border-width: 0px") do %>
-            <div
-              class="w-100 h-100 "
-              data-action="long-press->reveal#show"
-              data-long-press-delay="400"
-              style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
-              data-reveal-target="photo"
-              data-reveal-index-param="<%= index %>"
-              data-value= "<%= hotspot.name %>"
-              data-value-2= "<%= hotspot.description %>"
-              data-value-3= "<%= hotspot.categories %>"
-            >
-
-              &nbsp;
-            </div>
-
-          <% end %>
-          <% index += 1 %>
-
-        <% end %>
-
-      </div>
-    </div>
-
-
-    <div class="distancebox" data-controller="distance" data-action="touchstart->grey-button#update" >
-         <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
-         <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
-    </div>
-
+<div data-controller="loading">
+  <div class="d-none" data-loading-target="gif">
+  <iframe src="https://giphy.com/embed/Nyq5PsMMNb5zfLhoEA" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/crowsnestf45-crowsnestf45hollywood-f45hollywoodcrowsnest-Nyq5PsMMNb5zfLhoEA"></a></p>
   </div>
+  <div data-loading-target="content">
+    <div class="container" data-controller="reveal grey-button" data-reveal-hidden-class="d-none">
 
-  <div class="row simple-form btn-trajet-container" data-controller="geolocate">
-    <%= simple_form_for @request do |f| %>
-      <div
-        class="map"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        <div class="button-relative scrollable-list">
-          <%= f.input :category,
-            as: :check_boxes,
-            label: '',
-            input_html: {class: "tag-selector"},
-            item_wrapper_class: 'tag-item',
-            multiple: true,
-            as: :check_boxes,
-            collection: Category::NAMES %>
+      <div class="menu--wrapper" >
+        <div class="hotspot-navbar d-flex">
+          <div class="btn-trajet d-flex me-2" >
+            <%= link_to itineraries_path do %>
+              <p>Anciens Trajets</p>
+            <% end %>
+          </div>
+
+
+          <div class="d-flex scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
+            <% index = 0 %>
+
+            <% @hotspots.each do |hotspot| %>
+
+
+              <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2 position-relative overflow-hidden", style: "border-width: 0px") do %>
+
+                <div
+                  class="w-100 h-100 "
+                  data-action="long-press->reveal#show"
+                  data-long-press-delay="400"
+                  style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+                  data-reveal-target="photo"
+                  data-reveal-index-param="<%= index %>"
+                  data-value= "<%= hotspot.name %>"
+                  data-value-2= "<%= hotspot.description %>"
+                  data-value-3= "<%= hotspot.categories %>"
+                >
+
+                  &nbsp;
+                </div>
+
+              <% end %>
+              <% index += 1 %>
+
+            <% end %>
+
+          </div>
+        </div>
+
+
+        <div class="distancebox" data-controller="distance" data-action="touchstart->grey-button#update" >
+            <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
+            <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
+        </div>
+
+      </div>
+
+      <div class="row simple-form btn-trajet-container" data-controller="geolocate">
+        <%= simple_form_for @request, data: { action: "submit->loading#remove"} do |f| %>
+          <div
+            class="map"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            <div class="button-relative scrollable-list">
+              <%= f.input :category,
+                as: :check_boxes,
+                label: '',
+                input_html: {class: "tag-selector"},
+                item_wrapper_class: 'tag-item',
+                multiple: true,
+                as: :check_boxes,
+                collection: Category::NAMES %>
+            </div>
+          </div>
+
+          <%= f.input :longitude,
+                  as: :hidden,
+                  input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"} %>
+          <%= f.input  :latitude,
+                  as: :hidden,
+                  input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
+          <div class="big_grey_button" data-grey-button-target="button">
+          <%=  f.button :submit, "LOAD", class:"font_button" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="reveal-relative">
+        <div data-reveal-target="item" class="d-none grey_box" style="margin-top: 5rem;">
+          <div class="white_container">
+          </div>
         </div>
       </div>
-
-      <%= f.input :longitude,
-              as: :hidden,
-              input_html: {data: {geolocate_target: "longitude"}, class: "input-longitude"} %>
-      <%= f.input  :latitude,
-              as: :hidden,
-              input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
-      <div class="big_grey_button" data-grey-button-target="button">
-      <%=  f.button :submit, "LOAD", class:"font_button" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="reveal-relative">
-    <div data-reveal-target="item" class="d-none grey_box" style="margin-top: 5rem;">
-      <div class="white_container">
-      </div>
-     </div>
+    </div>
   </div>
 </div>
