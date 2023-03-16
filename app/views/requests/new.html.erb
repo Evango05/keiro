@@ -1,4 +1,4 @@
-<div class="container" data-controller="reveal" data-reveal-hidden-class="d-none">
+<div class="container" data-controller="reveal grey-button" data-reveal-hidden-class="d-none">
 
   <div class="menu--wrapper" >
     <div class="hotspot-navbar d-flex">
@@ -40,7 +40,7 @@
     </div>
 
 
-    <div class="distancebox" data-controller="distance">
+    <div class="distancebox" data-controller="distance" data-action="touchstart->grey-button#update" >
          <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
          <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
     </div>
@@ -72,8 +72,9 @@
       <%= f.input  :latitude,
               as: :hidden,
               input_html: {data: {geolocate_target: "latitude"}, class: "input-latitude"}%>
-
-      <%=  f.button :submit, "LOAD", class: "big_blue_button"%>
+      <div class="big_grey_button" data-grey-button-target="button">
+      <%=  f.button :submit, "LOAD", class:"font_button" %>
+      </div>
     <% end %>
   </div>
 

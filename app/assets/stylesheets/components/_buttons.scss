@@ -1,13 +1,28 @@
-.big_blue_button {
-  margin-top: 0rem;
-  background-color: #1A15FF;
+.font_button{
   color: rgb(255, 255, 255);
-  width: 100%;
   font-size: 1.3em;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
-  text-align: center;
   text-decoration: none;
+}
+
+.big_blue_button {
+  transition: background-color 0.5s ease-in;
+  margin-top: -1rem;
+  background-color: #1A15FF !important;
+  width: 100%;
+  padding: 0.5em 1em;
+  text-align: center;
+  border-radius: 0.5em;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.big_grey_button {
+  margin-top: 0rem;
+  background-color: #ECEAFF;
+  width: 100%;
+  padding: 0.5em 1em;
+  text-align: center;
+  border-radius: 0.5em;
 }
 
 .boxrecapbuttons {
