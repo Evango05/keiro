@@ -16,6 +16,18 @@
   position: absolute;
   z-index: 1;
   border: #1a15ff 2px solid;
+  background-position-y: -13rem;
+}
+
+.mapprogressnav {
+  top: -6rem;
+  width: 100%;
+  height: 80px;
+  border-radius: 1em ;
+  border: #1A15FF 1px solid;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.8;
 
 }
 
