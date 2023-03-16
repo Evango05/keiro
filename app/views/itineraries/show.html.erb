@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container" data-controller="reveal" data-reveal-hidden-class="d-none" >
   <%# ------ je commence ici -------- %>
 
   <div class="hotspot-navbar d-flex">
@@ -8,20 +8,32 @@
     </div>
 
 
-    <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
+    <div class="d-flex  scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
+    <% index = 0 %>
         <%# ici je recupère une collection de selected hostpots %>
         <% selected_hotspot_ids = [] %>
         <% @hotspot_instances.each do |hotspot| %>
+
           <% selected_hotspot_ids << hotspot.id %>
 
           <%= button_tag(type: 'submit', class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
+
             <div
               class="w-100 h-100 "
+              data-action="long-press->reveal#show"
+              data-long-press-delay="400"
               style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+              data-reveal-target="photo"
+              data-reveal-index-param="<%= index %>"
+              data-value= "<%= hotspot.name %>"
+              data-value-2= "<%= hotspot.description %>"
+              data-value-3= "<%= hotspot.categories %>"
             >
               &nbsp;
             </div>
           <% end %>
+          <% index += 1 %>
+
         <% end %>
     </div>
   </div>
@@ -49,6 +61,13 @@
   <div class="d-flex justify-content-between">
     <a class="big_blue_button" style="width: 170px" href="#">SEND GPX</a>
     <a class="big_blue_button" style="width: 170px" href="<%=itinerary_navigation_path(@itinerary)%>">NAVIGATE</a>
+  </div>
+
+  <div class="reveal-relative">
+    <div data-reveal-target="item" class="d-none grey_box" style="margin-top: 5rem;">
+      <div class="white_container">
+      </div>
+     </div>
   </div>
 
 </div>
