@@ -1,16 +1,55 @@
+<div class="container" data-controller="recap">
 
-<div class="container" >
+  <div class="hotspot-navbar d-flex">
+    <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
+        <%# ici je recupère une collection de selected hostpots %>
+        <% selected_hotspot_ids = [] %>
+        <% @hotspot_instances.each do |hotspot| %>
+          <% selected_hotspot_ids << hotspot.id %>
 
-  <div class="bravobox">
-        <p class = "m-0" id = textbox>Récapitulatif de votre course</p>
+          <%= button_tag(class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
+            <div
+              class="w-100 h-100"
+              style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
+            >
+              &nbsp;
+            </div>
+          <% end %>
+        <% end %>
+    </div>
   </div>
 
-  <div class= "maprecap"
+
+
+
+  <div class= "mapitinerary"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
     data-passingcoordinates-markers-value="<%= @markers.to_json %>"
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+    <div class="bravobox overlay" style="z-index: 9;">
+        <p class = "m-3" id = textbox >
+        Récapitulatif de votre course
+        </p>
+    </div>
+
+      <div class="bravobox overlay bottom" style="position: relative; z-index: 9;">
+        <p class = "m-3" id = textbox >
+        Récapitulatif de votre course
+        </p>
+    </div>
   </div>
+
+
+  <div class="d-flex justify-content-between boxrecapbuttons"
+  >
+    <div class="fa-solid fa-star favorite_button" data-action="click->recap#favorite">
+      <a class="big_blue_button p-3 d-none" style="position: absolute; top:50%;  left:3%; z-index: 9; width:366px;" data-recap-target="button_fav">ADDED TO FAVORITE</a></div>
+    <div class="share_button" data-action="click->recap#share">
+    SHARE
+     <a class="big_blue_button p-3 d-none" style="position: absolute; top:50%; left:3%;  z-index: 9; width:366px;" data-recap-target="button_share">SHARED ON STRAVA</a></div>
+    </div>
 
   <div class="distanceboxshowrecap" data-controller="distance">
     <span class="rs-label-recap" style="font-weight:500;">22.7 KM</span>
@@ -21,6 +60,7 @@
   <div class = "mt-3 boxrecapbuttons">
     <i class="fa-solid fa-star favorite_button"></i>
     <a class="share_button" href="#">SHARE</a>
+
   </div>
 
 </div>
