@@ -17,19 +17,19 @@
     <%= link_to 'Strava', 'https://www.strava.com', target: '_blank', id: 'link-style' %>
   </p>
 
-  <button>
+  <button class="btn btn-outline-primary">
     Edit Profile
   </button>
   <br>
 
-  <button class="btn-delete">
+  <button class="btn btn-outline-primary">
     Delete Profile
   </button>
 </div>
 
-<% @itineraries.each do |itinerary| %>
-  <div class='card-itinerary'><%= itinerary %></div>
-<% end %>
+<%# <% @itineraries.each do |itinerary| %>
+  <%# <div class='card-itinerary'><%= itinerary.name %>
+<%# <% end %>
 
 <%#  ici insérer  liens
 'EDIT'  pour aller sur la page update de user_path
