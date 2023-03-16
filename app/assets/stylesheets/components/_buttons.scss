@@ -25,6 +25,8 @@
 }
 
 .boxrecapbuttons {
+  position: relative;
+  top: -5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -192,4 +194,8 @@
 
 .scrollable-list fieldset::-webkit-scrollbar {
   display: none;
+}
+
+.yellow_star {
+  color: #FFC107;
 }
