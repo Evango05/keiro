@@ -9,10 +9,10 @@ export default class extends Controller {
 
   remove(e) {
     e.preventDefault();
-    this.contentTarget.classList.add("d-none");
+    // this.contentTarget.classList.add("d-none");
     this.gifTarget.classList.remove("d-none");
     setTimeout(() => {
       e.target.submit();
-    }, 2000);
+    }, 1500);
 }
 }
