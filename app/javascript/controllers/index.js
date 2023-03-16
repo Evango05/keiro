@@ -16,6 +16,9 @@ application.register("distance", DistanceController)
 import GeolocateController from "./geolocate_controller"
 application.register("geolocate", GeolocateController)
 
+import GreyButtonController from "./grey_button_controller"
+application.register("grey-button", GreyButtonController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
