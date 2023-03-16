@@ -25,7 +25,7 @@
 
               data-action="long-press->reveal#show"
               data-long-press-delay="400"
-              style="background-image: url(<%= hotspot.photo.url %>);  background-size: cover;"
+              style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
               data-reveal-target="photo"
               data-reveal-index-param="<%= index %>"
               data-value= "<%= hotspot.name %>"
