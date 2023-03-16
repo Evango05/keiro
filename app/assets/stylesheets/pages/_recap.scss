@@ -22,7 +22,7 @@
   margin: auto;
   position: relative;
   z-index: 3;
-  top: 0.5rem;
+  top: -42.5rem;
   background-color: #ECEAFF;
   border: #1A15FF 2px solid;
   border-radius: 20px;
@@ -44,4 +44,10 @@
   color: #1A15FF;
   border: 1px solid #ffffff00;
   margin-left: 25px;
+}
+
+.progressbar {
+  position: relative;
+  top: -1.5rem;
+  z-index: 9;
 }
