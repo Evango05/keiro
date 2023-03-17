@@ -32,7 +32,7 @@
 }
 
 .mapprogress {
-  top: -7rem;
+  top: -0.5rem;
   width: 100%;
   height: 80px;
   border-radius: 1em ;
@@ -122,6 +122,18 @@
   width: 100%;
   height: 340px;
   border-radius: 1em;
+  position: absolute;
+  z-index: 1;
+  border: #1a15ff 2px solid;
+  background-position-y: -13rem;
+}
+
+.mapitineraryrecap {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 340px;
+  border-radius: 1em ;
   position: absolute;
   z-index: 1;
   border: #1a15ff 2px solid;
