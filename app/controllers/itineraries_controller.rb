@@ -13,12 +13,11 @@ class ItinerariesController < ApplicationController
   end
 
   def create
-    @itinerary = Itinerary.new({selected_hotspot_ids: @selected_hotspot_ids })
 
+    @itinerary = Itinerary.new({selected_hotspot_ids: @selected_hotspot_ids })
     @itinerary.request = Request.find(params[:itinerary][:request_id])
 
     @hotspot_ids = params[:itinerary][:selected_hotspot_ids]
-
     @hotspot_ids = @hotspot_ids.split(" ").map(&:to_i)
 
     hotspots = Hotspot.where(id: @hotspot_ids)
@@ -30,7 +29,6 @@ class ItinerariesController < ApplicationController
     # Call Mappbox API to get route data
 
     url = "https://api.mapbox.com/directions/v5/mapbox/walking/#{safe_hotspots_string}?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
-    # url = "https://api.mapbox.com/directions/v5/walking/#{hotspots_string}?access_token=#{ENV['MAPBOX_API_KEY']}"
 
     routes_serialized = URI.open(url).read
 
@@ -41,16 +39,18 @@ class ItinerariesController < ApplicationController
     # data["routes"][0]
     # data["uuid"]
 
+    # ------------Ici j'attribue la DATA de MAPBOX à chaque itinéraire ----------------------
     @itinerary.route = data
+    # --> itinerary travel time
+    @itinerary.duration = data["routes"][0]["duration"]
 
+
+
+    # --> distance du trajet
     @itinerary.length = data["routes"][0]["distance"]
-
-    # Methode pour passer en km avec 2 chiffres après la virgule
-    @itinerary.length = @itinerary.length / 1000
-    @itinerary.length = @itinerary.length.round(2)
-
-  # Methode pour passer en minutes
-    @itinerary.duration = data["routes"][0]["duration"] / 60
+    @itinerary.length = @itinerary.length.round(1)
+    # --> nom du trajet
+    @itinerary.name = "Tour du #{@itinerary.created_at.to_date}"
 
     if @itinerary.save
       redirect_to itinerary_path(@itinerary)
@@ -83,8 +83,6 @@ class ItinerariesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
-
-    # @passingcoordinates = hotspots_string(@hotspot_instances)
   end
 
   def navigation

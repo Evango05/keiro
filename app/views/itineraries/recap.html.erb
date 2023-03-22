@@ -1,4 +1,4 @@
-<div class="container" data-controller="recap">
+<div class="container-mobile" data-controller="recap">
 
   <div class="hotspot-navbar d-flex">
     <div class="d-flex  scrollable-list" style="overflow-x: scroll;">
@@ -19,9 +19,6 @@
     </div>
   </div>
 
-
-
-
   <div class= "mapitineraryrecap"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
@@ -29,8 +26,7 @@
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-
-<div
+  <div
     class="mapprogress"
     style="position: relative; background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678983192/Keiro_chargement_2_jl1ek4.png'); background-size: cover;"
   >
@@ -46,9 +42,9 @@
     </div>
 
   <div class="distanceboxshowrecap" data-controller="distance">
-    <span class="rs-label-recap" style="font-weight:500;">22.7 KM</span>
-    <span class="rs-label-recap" style="font-weight:500;">267D+</span>
-    <span class="rs-label-recap" style="font-weight:500;">2h20</span>
+    <span class="rs-label-recap" style="font-weight:500;"><%= @itinerary.length %>KM</span>
+    <span class="rs-label-recap" style="font-weight:500;"> ... D+</span>
+    <span class="rs-label-recap" style="font-weight:500;"><%= @itinerary.duration %>min</span>
   </div>
 
 </div>

@@ -1,14 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/degkqrdcu/image/upload/v1678983891/logo_new_blue_bffbd7.png" %>
+      <%= image_tag("LOGO_NEWCOLOUR@remibuscot.png") %>
     <% end %>
 
     <div>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-<%# ici updater la navbar avec le lien de la photo de user ?%>
           <%= link_to user_path(@user) do %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/rbuscot01", class: "avatar dropdown-toggle" %>
             <% end %>

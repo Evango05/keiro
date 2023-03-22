@@ -1,20 +1,33 @@
-<h2>Log in</h2>
+<div class="container-mobile">
+  <div class="container-user mt-5">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <h3>Hi and welcome on Keiro! 👋</h3>
+
+    <p class="text-start">This app has been prototyped during Le Wagon BootCamp in Marseille in March 2023 by Adrien, Evan and Rémi.
+    Work is still in process...<br></p>
+    <p class="text-center"> Wanna take a look?<br> 👉 test@gmail.com 123456 </p>
+
+    <div class="container-user mt-1">
+      <h3>Log in</h3>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class: 'btn-primary w-100' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,12 +1,9 @@
-<div class="container" data-controller="reveal" data-reveal-hidden-class="d-none" >
-  <%# ------ je commence ici -------- %>
-
+<div class="container-mobile" data-controller="reveal" data-reveal-hidden-class="d-none" >
   <div class="hotspot-navbar d-flex">
 
     <div class="btn-trajet d-flex me-2">
       <a href="<%= itineraries_path %>" class="">Anciens Trajets</a>
     </div>
-
 
     <div class="d-flex  scrollable-list" style="overflow-x: scroll;" data-action="long-press->reveal#toggle">
     <% index = 0 %>
@@ -19,7 +16,7 @@
           <%= button_tag(type: 'submit', class: "btn btn-trajet btn-selected p-0 me-2 position-relative overflow-hidden") do %>
 
             <div
-              class="w-100 h-100 "
+              class="w-100 h-100"
 
               style="background-image: url(<%=  cl_image_path(hotspot.photo.key, {secure: true}) %>);  background-size: cover;"
 
@@ -42,25 +39,18 @@
     </div>
   </div>
 
-  <%# ------ je finis ici -------- %>
   <div class= "mapitinerary"
     data-controller="passingcoordinates"
     data-passingcoordinates-itinerary-route-value="<%=  @itinerary.route.to_json %>"
     data-passingcoordinates-markers-value="<%= @markers.to_json %>"
     data-passingcoordinates-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-
     <div class="distanceboxshow" data-controller="distance">
-      <span class="rs-label-show" style="font-weight:500;">22.7 KM</span>
-      <span class="rs-label-show" style="font-weight:500;">267D+</span>
-      <span class="rs-label-show" style="font-weight:500;">2h20</span>
+      <span class="rs-label-show" style="font-weight:500;"> <%= @itinerary.length %>KM</span>
+      <span class="rs-label-show" style="font-weight:500;"> ... D+</span>
+      <span class="rs-label-show" style="font-weight:500;"><%= @itinerary.duration%>min</span>
     </div>
-
-
   </div>
-
-
-
 
   <div class="d-flex justify-content-between">
     <a class="big_blue_button" style="width: 170px" href="#">SEND GPX</a>

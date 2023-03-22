@@ -17,7 +17,13 @@
 .box {
   width: 80px;
   height: 80px;
+}
 
+.container-mobile {
+  left: calc(50% - 345px/2 - 1px);
+  max-width: 345px;
+  position: absolute;
+  margin-top: 5pt;
 }
 
 .index-title {
@@ -47,4 +53,3 @@
 .font_bold {
   font-weight: 900;
 }
-
