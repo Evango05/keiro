@@ -25,9 +25,13 @@ class RequestsController < ApplicationController
     @request.longitude = params[:request][:longitude]
     @request.latitude = params[:request][:latitude]
 
-    @request.save
+
     # no need to create a view for create
-    redirect_to request_path(@request)
+    if @request.save
+      redirect_to request_path(@request)
+    else
+      flash[:alert] = "Something went wrong"
+    end
   end
 
   def show
@@ -44,10 +48,12 @@ class RequestsController < ApplicationController
     routes_serialized = URI.open(url).read
     data = JSON.parse(routes_serialized)
 
+    # -------- C'est ici que ça se passe on fait directement un update --------- %>
+
     @itinerary.update(
       route: data,
-      length: (data["routes"][0]["distance"] / 1000).round(2),
-      duration: data["routes"][0]["duration"] / 60
+      length: (data["routes"][0]["distance"] / 1000).round(1),
+      duration: data["routes"][0]["duration"] / 130
     )
 
     if @itinerary.save

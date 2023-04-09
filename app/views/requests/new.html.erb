@@ -37,7 +37,7 @@
         </div>
 
 
-        <div class="distancebox" data-controller="distance" data-action="touchstart->grey-button#update" >
+        <div class="distancebox shadow" data-controller="distance" data-action="touchstart->grey-button#update" >
             <input id = rs-range-line class="rs-range numeric range optional" value="0" max="50" data-action="input->distance#update" data-distance-target="distanceinput" type="range" step="1" name="request[distance]" id="request_distance">
             <span class="rs-label" data-distance-target="distanceinject"id="rs-bullet" >0 km</span>
         </div>
@@ -45,7 +45,10 @@
       </div>
 
       <div class="row simple-form btn-trajet-container" data-controller="geolocate">
+
+      <%# -------- sending simple form for REQUEST --------- %>
         <%= simple_form_for @request, data: { action: "submit->loading#remove"} do |f| %>
+
         <div
           class="map"
           data-controller="map"
@@ -55,11 +58,15 @@
             <%= f.input :category,
               as: :check_boxes,
               label: '',
+              label_htm: {class: "shadow"},
               input_html: {class: "tag-selector"},
               item_wrapper_class: 'tag-item',
               multiple: true,
-              as: :check_boxes,
               collection: Category::NAMES %>
+          </div>
+
+          <div class="gifrelative d-none" data-loading-target="gif">
+            <img src="https://res.cloudinary.com/degkqrdcu/image/upload/v1678990568/GIF-KEIRO-V3_nbrwtj.gif" style="position: relative;   top: 8.5rem; left: 6.5vw; scale: 0.5; z-index: 5;">
           </div>
         </div>
 
@@ -73,7 +80,7 @@
         <div class="big_grey_button" data-grey-button-target="button">
         <%=  f.button :submit, "LOAD", class:"font_button" %>
         </div>
-
+        <%# -------- Here button SUBMIT creates new request --------- %>
         <% end %>
       </div>
 
@@ -85,9 +92,7 @@
       </div>
 
 
-      <div class="gifrelative d-none" data-loading-target="gif">
-        <iframe src="https://res.cloudinary.com/degkqrdcu/image/upload/v1678990568/GIF-KEIRO-V3_nbrwtj.gif" style="position: absolute; scale: 0.5; opacity: 0.7; margin-left: 7%; top:13rem; z-index: 9; width:366px;" height="480" frameBorder="0" class="giphy-embed"></iframe><p><a href="https://giphy.com/gifs/crowsnestf45-crowsnestf45hollywood-f45hollywoodcrowsnest-Nyq5PsMMNb5zfLhoEA"></a></p>
-      </div>
+
     </div>
   </div>
 

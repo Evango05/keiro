@@ -1,4 +1,4 @@
-<div class="container" data-controller="navigation">
+<div class="container-mobile" data-controller="navigation">
 
   <div class="hotspot-navbar d-flex justify-content-between">
 
@@ -16,7 +16,6 @@
 
 
     <%= button_tag(type: 'submit', class: "btn btn-trajet p-0 me-2   overflow-hidden", style: "background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678888356/Plan_de_travail_4_copie_2_imqhro.png'); background-size: cover;") do %>
-
       <div
         class="w-100 h-100"
         >
@@ -40,19 +39,19 @@
     class="mapitinerarynav"
     style="position: relative; background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678896470/navigation_new_mhgrrz.png'); background-size: cover;"
   >
-  </div>
+    <div
+      class="mapprogressnav"
+      style="background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678983192/Keiro_chargement_1_bhxymx.png'); background-size: cover; background-position-y: -0.5rem"
+    >
+    </div>
 
-  <div
-    class="mapprogressnav"
-    style="position: relative; background-image: url('https://res.cloudinary.com/degkqrdcu/image/upload/v1678983192/Keiro_chargement_1_bhxymx.png'); background-size: cover;"
-  >
+    <a class="big_blue_button p-3 d-none margin-auto" style="position: relative; top: 10rem; " data-navigation-target="button4">NAVIGATION PAUSED</a>
   </div>
 
   <div class="d-flex justify-content-between boxrecapbuttons"  data-action="click->navigation#paused" >
-    <a class="big_blue_button" data-navigation-target="button" >STOP</a>
-    <a class="big_blue_button d-none" style="width: 170px" href="<%= itinerary_path(@itinerary) %>" data-navigation-target="button2">BACK</a>
-    <a class="big_blue_button d-none" style="width: 170px" href="<%= itinerary_recap_path(@itinerary) %>" data-navigation-target="button3">END</a>
-    <a class="big_blue_button p-3 d-none" style="position: absolute; top:-24rem; z-index: 9; width:366px;" data-navigation-target="button4">NAVIGATION PAUSED</a>
+    <a class="big_blue_button p-3" data-navigation-target="button" >STOP</a>
+    <a class="big_blue_button p-3 d-none" style="width: 170px" href="<%= itinerary_path(@itinerary) %>" data-navigation-target="button2">BACK</a>
+    <a class="big_blue_button p-3 d-none" style="width: 170px" href="<%= itinerary_recap_path(@itinerary) %>" data-navigation-target="button3">END</a>
   </div>
 
 </div>

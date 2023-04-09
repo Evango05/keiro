@@ -22,15 +22,13 @@
 .container-mobile {
   left: calc(50% - 345px/2 - 1px);
   max-width: 345px;
+  width: 100%;
   position: absolute;
   margin-top: 5pt;
 }
 
 .index-title {
   font-size: 11pt;
-
-
-
 }
 
 .index-text {

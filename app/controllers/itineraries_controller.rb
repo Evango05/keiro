@@ -44,11 +44,9 @@ class ItinerariesController < ApplicationController
     # --> itinerary travel time
     @itinerary.duration = data["routes"][0]["duration"]
 
-
-
     # --> distance du trajet
-    @itinerary.length = data["routes"][0]["distance"]
-    @itinerary.length = @itinerary.length.round(1)
+    @itinerary.length = data["routes"][0]["distance"].round(1)
+
     # --> nom du trajet
     @itinerary.name = "Tour du #{@itinerary.created_at.to_date}"
 
